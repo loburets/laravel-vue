@@ -21,13 +21,21 @@ class ArticleTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        //todo check validation
         $response = $this->actingAs($user)
             ->json('POST', '/api/article', ['name' => 'Sally', 'text' => 'Some article text']);
 
         $response->assertStatus(200)
             ->assertJson([
                 'created' => true,
+            ]);
+
+        $failResponse = $this->actingAs($user)
+            ->json('POST', '/api/article');
+
+        $failResponse->assertStatus(422)
+            ->assertJsonStructure([
+                'name',
+                'text',
             ]);
     }
 
