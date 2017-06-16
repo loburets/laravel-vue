@@ -13,8 +13,6 @@ class ArticleTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * Test creation method in controller
-     *
      * @return void
      * @test
      */

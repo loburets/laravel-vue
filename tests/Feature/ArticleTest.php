@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Article;
 use App\Models\User;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -15,17 +16,16 @@ class ArticleTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * Test creation
-     *
      * @return void
      * @test
      */
     public function user_can_create_article()
     {
-        $user = factory(User::class)->create();
+        Passport::actingAs(
+            factory(User::class)->create()
+        );
 
-        $response = $this->actingAs($user)
-            ->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text']);
+        $response = $this->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text']);
 
         $response->assertStatus(200)
             ->assertJson([
@@ -39,17 +39,30 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * Test creation
-     *
+     * @return void
+     * @test
+     */
+    public function unauthorized_user_can_not_create_article()
+    {
+        $response = $this->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text']);
+
+        $response->assertStatus(401)
+            ->assertJson([
+                'error' => 'Unauthenticated.',
+            ]);
+    }
+
+    /**
      * @return void
      * @test
      */
     public function article_creation_is_validated()
     {
-        $user = factory(User::class)->create();
+        Passport::actingAs(
+            factory(User::class)->create()
+        );
 
-        $failResponse = $this->actingAs($user)
-            ->json('POST', '/api/article');
+        $failResponse = $this->json('POST', '/api/article');
 
         $failResponse->assertStatus(422)
             ->assertJsonStructure([
@@ -59,8 +72,6 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * Test creation
-     *
      * @return void
      * @test
      */
