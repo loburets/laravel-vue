@@ -168,7 +168,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Laravel\Passport\PassportServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
