@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Models\Article;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -30,18 +31,22 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param ArticleRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        //
+        /** @var Article $article */
+        $article = Article::create($request->all());
+
+        return response()
+            ->json(['created' => 'true', 'id' => $article->id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  Article $article
      * @return \Illuminate\Http\Response
      */
     public function show(Article $article)
@@ -52,7 +57,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  Article  $article
      * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
@@ -64,7 +69,7 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
+     * @param  Article  $article
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Article $article)
@@ -75,7 +80,7 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  Article  $article
      * @return \Illuminate\Http\Response
      */
     public function destroy(Article $article)

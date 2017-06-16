@@ -12,7 +12,14 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//todo add 'auth:api'
+//https://laravel.com/docs/5.4/passport
+Route::middleware(['api'])->group(function () {
+    Route::resource(
+        'article',
+        'ArticleController',
+        [
+            'except' => ['index', 'create', 'show', 'edit', 'update', 'destroy']
+        ]
+    );
 });
