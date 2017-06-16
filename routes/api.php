@@ -20,7 +20,7 @@ Route::middleware('api')->group(function () {
         'article',
         'ArticleController',
         [
-            'except' => ['index', 'create', 'show', 'edit', 'update', 'destroy']
+            'except' => ['create', 'show', 'edit', 'update', 'destroy']
         ]
     );
 });

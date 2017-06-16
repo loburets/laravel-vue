@@ -10,13 +10,15 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ArticleTest extends TestCase
 {
     use DatabaseTransactions;
+    use DatabaseMigrations;
 
     /**
      * Test creation method in controller
      *
      * @return void
+     * @test
      */
-    public function testCreationMethod()
+    public function controller_can_create_article()
     {
         $articleController = $this->app->make('\App\Http\Controllers\ArticleController');
         $articleController->store(ArticleRequest::create('/', 'POST', ['name' => 'test name', 'text' => 'test text']));

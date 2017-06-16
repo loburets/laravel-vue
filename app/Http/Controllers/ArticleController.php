@@ -11,11 +11,11 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return Article::paginate(10);
     }
 
     /**
