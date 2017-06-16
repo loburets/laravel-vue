@@ -12,9 +12,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//todo add 'auth:api'
-//https://laravel.com/docs/5.4/passport
-Route::middleware(['api'])->group(function () {
+//todo https://laravel.com/docs/5.4/passport
+//Route::middleware('auth:api')->group(function () {
+Route::middleware('api')->group(function () {
+
     Route::resource(
         'article',
         'ArticleController',

@@ -23,7 +23,7 @@ class ArticleTest extends TestCase
 
         //todo check validation
         $response = $this->actingAs($user)
-            ->json('POST', '/article', ['name' => 'Sally', 'text' => 'Some article text']);
+            ->json('POST', '/api/article', ['name' => 'Sally', 'text' => 'Some article text']);
 
         $response->assertStatus(200)
             ->assertJson([
