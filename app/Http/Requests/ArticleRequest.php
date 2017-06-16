@@ -13,7 +13,6 @@ class ArticleRequest extends FormRequest
      */
     public function authorize()
     {
-        //todo false
         return true;
     }
 
