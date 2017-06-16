@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Http\Requests\ArticleRequest;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,7 +16,7 @@ class ArticleTest extends TestCase
      */
     public function testCreationMethod(\App\Http\Controllers\ArticleController $articleController)
     {
-        $articleController->store(\Illuminate\Http\Request::create('/', 'POST', ['name' => 'test name', 'text' => 'test text']));
+        $articleController->store(ArticleRequest::create('/', 'POST', ['name' => 'test name', 'text' => 'test text']));
 
         $this->assertDatabaseHas('article', [
             'name' => 'test name',

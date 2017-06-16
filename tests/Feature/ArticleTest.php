@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -20,6 +21,7 @@ class ArticleTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        //todo check validation
         $response = $this->actingAs($user)
             ->json('POST', '/article', ['name' => 'Sally', 'text' => 'Some article text']);
 
