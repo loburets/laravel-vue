@@ -1,13 +1,16 @@
 <template>
-    <div>
-        <div v-for="article in articles">
-            {{article.name}}
-        </div>
+    <div class="container">
+        <article-item
+            v-for="article in articles"
+            v-bind:article="article"
+            v-bind:key="article.id"
+        >
+        </article-item>
     </div>
 </template>
 
 <script>
-//    Vue.component('article', require('./Article.vue'));
+    Vue.component('article-item', require('./Article-item.vue'));
 
     export default {
         mounted() {
