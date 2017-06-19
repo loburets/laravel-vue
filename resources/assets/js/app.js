@@ -25,13 +25,5 @@ Vue.component('article-list', require('./components/Article-list.vue'));
 
 const app = new Vue({
     el: '#app',
-    template: '<article-list :articles="articles"></article-list>',
-    data: {
-        articles: [
-            { id: 0, name: 'Vegetables' },
-            { id: 1, name: 'Cheese' },
-            { id: 2, name: 'Whatever else humans are supposed to eat' },
-            { id: 3, name: 'Whatever else humans are supposed to eat' },
-        ]
-    }
+    template: '<article-list></article-list>',
 });

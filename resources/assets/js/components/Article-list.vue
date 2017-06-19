@@ -12,10 +12,23 @@
 <script>
     Vue.component('article-item', require('./Article-item.vue'));
 
+    /**
+     * TODO
+     * preloader
+     * pagination
+     */
     export default {
         mounted() {
             console.log('Article list mounted.')
         },
-        props: ['articles'],
+        data() {
+            return {articles:[]};
+        },
+        created() {
+            axios.get('/api/article').then((response) => {
+                this.articles = response.data.data;
+            })
+            .catch((error) => console.log(error.response.data));
+        },
     }
 </script>
