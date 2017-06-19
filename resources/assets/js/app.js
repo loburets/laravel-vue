@@ -17,7 +17,6 @@ window.Vue = require('vue');
 
 /**
  * TODO
- * naming
  * routes
  * vuex
  */
