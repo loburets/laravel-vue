@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <preloader v-show="preloader"></preloader>
+                <preloader v-show="!loaded"></preloader>
                 <article-item
                     v-for="article in articles"
                     v-bind:article="article"
                     v-bind:key="article.id"
                 >
                 </article-item>
-                <h4 v-if="!preloader && articles.length == 0" class="inscription">There isn't articles</h4>
+                <h4 v-if="loaded && articles.length == 0" class="inscription">There isn't articles</h4>
             </div>
         </div>
     </div>
@@ -19,25 +19,26 @@
     import Vue from 'vue'
     import Preloader from './Preloader'
     import ArticleItem from './Article-item'
+    import { mapState } from 'vuex'
+    import { UPDATE_ARTICLES_MUTATION } from '../store/Article';
 
     Vue.component('preloader', Preloader)
     Vue.component('article-item', ArticleItem)
 
     /**
-     * TODO
-     * pagination
+     * TODO pagination
      */
     export default {
-        data() {
-            return {
-                articles:{},
-                preloader: true,
-            };
-        },
+        computed: mapState({
+            //todo check articles.articles
+            articles: state => state.Article.articles.articles,
+            loaded: state => state.Article.loaded,
+        }),
         created() {
             axios.get('/api/article').then((response) => {
-                this.articles = response.data.data;
-                this.preloader = false;
+                this.$store.commit(UPDATE_ARTICLES_MUTATION, {
+                    articles: response.data.data
+                })
             })
             .catch((error) => console.log(error.response.data));
         },
