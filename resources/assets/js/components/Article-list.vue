@@ -20,7 +20,7 @@
     import Preloader from './Preloader'
     import ArticleItem from './Article-item'
     import { mapState } from 'vuex'
-    import { UPDATE_ARTICLES_MUTATION } from '../store/Article';
+    import { LOAD_ARTICLES_ACTION } from '../store/Article'
 
     Vue.component('preloader', Preloader)
     Vue.component('article-item', ArticleItem)
@@ -34,12 +34,9 @@
             loaded: state => state.Article.loaded,
         }),
         created() {
-            axios.get('/api/article').then((response) => {
-                this.$store.commit('Article/' + UPDATE_ARTICLES_MUTATION, {
-                    articles: response.data.data
-                })
+            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION).then(() => {
+                //...
             })
-            .catch((error) => console.log(error.response.data));
         },
     }
 </script>
