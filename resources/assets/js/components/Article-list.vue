@@ -30,7 +30,6 @@
      */
     export default {
         computed: mapState({
-            //todo check articles.articles
             articles: state => state.Article.articles.articles,
             loaded: state => state.Article.loaded,
         }),
