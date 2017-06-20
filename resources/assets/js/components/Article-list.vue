@@ -36,7 +36,7 @@
         }),
         created() {
             axios.get('/api/article').then((response) => {
-                this.$store.commit(UPDATE_ARTICLES_MUTATION, {
+                this.$store.commit('Article/' + UPDATE_ARTICLES_MUTATION, {
                     articles: response.data.data
                 })
             })

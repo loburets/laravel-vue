@@ -3,8 +3,7 @@ export const UPDATE_ARTICLES_MUTATION = 'UPDATE_ARTICLES_MUTATION'
 //todo some getter
 //todo some actions
 export default {
-    //todo ??
-    namespaced: false,
+    namespaced: true,
     state: {
         articles: [],
         loaded: false,
