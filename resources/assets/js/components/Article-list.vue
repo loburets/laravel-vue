@@ -16,17 +16,18 @@
 </template>
 
 <script>
-    Vue.component('article-item', require('./Article-item.vue'));
-    Vue.component('preloader', require('./Preloader.vue'));
+    import Vue from 'vue'
+    import Preloader from './Preloader'
+    import ArticleItem from './Article-item'
+
+    Vue.component('preloader', Preloader)
+    Vue.component('article-item', ArticleItem)
 
     /**
      * TODO
      * pagination
      */
     export default {
-        mounted() {
-            console.log('Article list mounted.')
-        },
         data() {
             return {
                 articles:{},

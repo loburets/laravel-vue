@@ -10,9 +10,6 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Article mounted.')
-        },
         props: ['article'],
     }
 </script>

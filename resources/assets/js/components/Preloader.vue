@@ -6,11 +6,7 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Preloader mounted.')
-        },
-    }
+    export default {}
 </script>
 
 <style scoped>
