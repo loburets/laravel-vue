@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/{vueRoutes?}', function() {
     return view('index');
-});
+})->where('vueRoutes', '[\/\w\.-]*');
