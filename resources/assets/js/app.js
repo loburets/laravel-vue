@@ -11,3 +11,11 @@ new Vue({
     store,
     render: h => h(App),
 })
+
+/**
+ * TODO:
+ * Pagination
+ * Registration
+ * CRUD
+ * Update button
+ **/

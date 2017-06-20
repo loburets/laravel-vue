@@ -25,12 +25,9 @@
     Vue.component('preloader', Preloader)
     Vue.component('article-item', ArticleItem)
 
-    /**
-     * TODO pagination
-     */
     export default {
         computed: mapState({
-            articles: state => state.Article.articles.articles,
+            articles: state => state.Article.articles,
             loaded: state => state.Article.loaded,
         }),
         created() {

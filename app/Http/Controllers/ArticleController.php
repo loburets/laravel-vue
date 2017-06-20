@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return Article::paginate(10);
+        return Article::paginate(3);
     }
 
     /**
