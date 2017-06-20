@@ -1,7 +1,6 @@
 export const UPDATE_ARTICLES_MUTATION = 'UPDATE_ARTICLES_MUTATION'
 export const LOAD_ARTICLES_ACTION = 'LOAD_ARTICLES_ACTION'
 
-//todo some getter
 export default {
     namespaced: true,
     state: {
@@ -26,5 +25,5 @@ export default {
             })
 
         }
-    }
+    },
 }
