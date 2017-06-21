@@ -10,7 +10,7 @@
                 >
                 </article-item>
                 <h4 v-if="loaded && articles.length == 0" class="inscription">There isn't articles</h4>
-                <pagination v-if="loaded && articles.length != 0"></pagination>
+                <pagination v-if="loaded && articles.length != 0" entity="article"></pagination>
             </div>
         </div>
     </div>
