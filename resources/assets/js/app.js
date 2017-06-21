@@ -16,7 +16,7 @@ new Vue({
  * TODO:
  * Registration
  * CRUD
- * Update button instead autoupdate
+ * Update button instead autoupdate?
  * Header
  * Vue tests
  **/
