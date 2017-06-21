@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->group(function () {
 
+    Auth::routes();
     Route::get('article', 'ArticleController@index');
 });
 
