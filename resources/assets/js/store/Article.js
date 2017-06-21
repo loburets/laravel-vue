@@ -24,9 +24,10 @@ export default {
         },
         [NOT_LOADED] (state) {
             state.loaded = false
+            state.articles = []
         },
         [LOADED_ARTICLES_MUTATION] (state, response) {
-            let data = response.data;
+            let data = response.data
 
             state.articles = data.data
             state.loaded = true
