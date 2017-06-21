@@ -10,6 +10,7 @@
                 >
                 </article-item>
                 <h4 v-if="loaded && articles.length == 0" class="inscription">There isn't articles</h4>
+                <pagination v-if="loaded && articles.length != 0"></pagination>
             </div>
         </div>
     </div>
@@ -19,11 +20,13 @@
     import Vue from 'vue'
     import Preloader from './Preloader'
     import ArticleItem from './Article-item'
+    import Pagination from './Pagination'
     import { mapState } from 'vuex'
     import { LOAD_ARTICLES_ACTION } from '../store/Article'
 
     Vue.component('preloader', Preloader)
     Vue.component('article-item', ArticleItem)
+    Vue.component('pagination', Pagination)
 
     export default {
         computed: mapState({
@@ -31,7 +34,7 @@
             loaded: state => state.Article.loaded,
         }),
         created() {
-            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION).then(() => {
+            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, this.$route.params.page).then(() => {
                 //...
             })
         },

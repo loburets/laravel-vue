@@ -14,9 +14,9 @@ new Vue({
 
 /**
  * TODO:
- * Pagination
  * Registration
  * CRUD
- * Update button
+ * Update button instead autoupdate
  * Header
+ * Vue tests
  **/

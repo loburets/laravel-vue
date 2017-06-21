@@ -10,9 +10,10 @@ export default {
     state: {
         articles: [],
         loaded: false,
-        per_page: null,
-        current_page: null,
-        last_page: null,
+        perPage: null,
+        currentPage: null,
+        lastPage: null,
+        path: null,
     },
     mutations: {
         [UPDATE_ARTICLES_MUTATION] (state, articles) {
@@ -23,15 +24,16 @@ export default {
 
             state.articles = data.data
             state.loaded = true
-            state.per_page = data.per_page
-            state.current_page = data.current_page
-            state.last_page = data.last_page
+            state.perPage = data.per_page
+            state.currentPage = data.current_page
+            state.lastPage = data.last_page
+            state.path = data.path
         },
     },
     actions: {
-        [LOAD_ARTICLES_ACTION] (context) {
+        [LOAD_ARTICLES_ACTION] (context, page) {
             return new Promise((resolve, reject) => {
-                axios.get('/api/article').then((response) => {
+                axios.get('/api/article', { params: { page: page } }).then((response) => {
                     context.commit(LOADED_ARTICLES_MUTATION, response)
                     resolve()
                 }).catch((error) => { console.log(error.response.data); reject(); })
