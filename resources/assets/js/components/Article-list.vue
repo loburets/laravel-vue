@@ -38,6 +38,7 @@
         },
         beforeRouteUpdate (to, from, next) {
             this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, to.params.page)
+            next()
         },
     }
 </script>
