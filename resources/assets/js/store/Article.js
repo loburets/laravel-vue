@@ -4,6 +4,8 @@ export const UPDATE_ARTICLES_MUTATION = 'UPDATE_ARTICLES_MUTATION'
 export const LOAD_ARTICLES_ACTION = 'LOAD_ARTICLES_ACTION'
 //proceed response after articles loading
 export const LOADED_ARTICLES_MUTATION = 'LOADED_ARTICLES_MUTATION'
+//set loaded state to false
+export const NOT_LOADED = 'NOT_LOADED'
 
 export default {
     namespaced: true,
@@ -15,9 +17,13 @@ export default {
         lastPage: null,
         path: null,
     },
+    //todo move to file
     mutations: {
         [UPDATE_ARTICLES_MUTATION] (state, articles) {
             state.articles = articles
+        },
+        [NOT_LOADED] (state) {
+            state.loaded = false
         },
         [LOADED_ARTICLES_MUTATION] (state, response) {
             let data = response.data;
@@ -30,8 +36,16 @@ export default {
             state.path = data.path
         },
     },
+    //todo move to file
     actions: {
         [LOAD_ARTICLES_ACTION] (context, page) {
+
+            if (typeof(page) === 'undefined') {
+                page = 1
+            }
+
+            context.commit(NOT_LOADED)
+
             return new Promise((resolve, reject) => {
                 axios.get('/api/article', { params: { page: page } }).then((response) => {
                     context.commit(LOADED_ARTICLES_MUTATION, response)

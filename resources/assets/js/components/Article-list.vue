@@ -34,9 +34,10 @@
             loaded: state => state.Article.loaded,
         }),
         created() {
-            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, this.$route.params.page).then(() => {
-                //...
-            })
+            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, this.$route.params.page)
+        },
+        beforeRouteUpdate (to, from, next) {
+            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, to.params.page)
         },
     }
 </script>

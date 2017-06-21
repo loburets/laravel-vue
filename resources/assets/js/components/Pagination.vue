@@ -25,6 +25,7 @@
                 pages: []
             }
         },
+        //todo abstraction
         computed: mapState({
             perPage: state => state.Article.perPage,
             currentPage: state => state.Article.currentPage,
