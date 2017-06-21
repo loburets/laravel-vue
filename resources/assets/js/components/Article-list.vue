@@ -22,7 +22,7 @@
     import ArticleItem from './Article-item'
     import Pagination from './Pagination'
     import { mapState } from 'vuex'
-    import { LOAD_ARTICLES_ACTION } from '../store/Article'
+    import { LOAD_ARTICLES_ACTION } from '../store/Article/actions'
 
     Vue.component('preloader', Preloader)
     Vue.component('article-item', ArticleItem)

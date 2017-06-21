@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Article from './Article'
+import Article from './Article/'
 
 Vue.use(Vuex)
 
