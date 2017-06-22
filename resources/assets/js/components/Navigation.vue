@@ -40,7 +40,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="">
+                                <a href="" @click.prevent="logout()">
                                     Logout
                                 </a>
                             </li>
@@ -54,11 +54,17 @@
 
 <script>
     import { mapState } from 'vuex'
+    import { LOGOUT_MUTATION } from '../store/user/mutations'
 
     export default {
         computed: mapState({
             authorized: state => state.User.authorized,
             email: state => state.User.email,
         }),
+        methods: {
+            logout() {
+                this.$store.commit('User/' + LOGOUT_MUTATION)
+            }
+        }
     }
 </script>
