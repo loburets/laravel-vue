@@ -21,7 +21,10 @@ Route::middleware('api')->group(function () {
 });
 
 
-Route::middleware(['auth', 'jwt.auth'])->group(function () {
+Route::middleware(['jwt.auth'])->group(function () {
+
+    Route::get('jwt-check', 'Auth\LoginController@jwtCheck');
+
     Route::resource(
         'article',
         'ArticleController',

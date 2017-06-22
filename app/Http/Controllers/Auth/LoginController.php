@@ -54,11 +54,29 @@ class LoginController extends Controller
         }
 
         if (!empty($token)) {
-            return response()->json(compact('token'));
+            //to equal result for login and storage token checking
+            return $this->jwtCheck($token);
         }
 
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Return user by jwt
+     *
+     * @param string $token
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function jwtCheck($token = '')
+    {
+        if (empty($token)) {
+            $token = (string)\JWTAuth::getToken();
+        }
+
+        $user = \JWTAuth::toUser($token);
+
+        return response()->json(compact('token', 'user'));
     }
 }
