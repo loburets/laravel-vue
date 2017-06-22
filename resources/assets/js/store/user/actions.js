@@ -1,3 +1,5 @@
+import { LOGIN_RESPONSE_MUTATION } from './mutations'
+
 /**
  * Send credentials to backend
  * @type {string}
@@ -9,8 +11,7 @@ export default {
 
         return new Promise((resolve, reject) => {
             axios.post('/api/jwt-login', credentials).then((response) => {
-                //todo save token
-                // context.commit(LOGIN_RESPONSE_MUTATION, response)
+                context.commit(LOGIN_RESPONSE_MUTATION, response)
                 resolve()
             }).catch((error) => reject(error.response))
         })

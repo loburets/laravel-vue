@@ -3,7 +3,11 @@ import actions from './actions'
 
 export default {
     namespaced: true,
-    state: {},
+    state: {
+        token: '',
+        email: '',
+        authorized: false,
+    },
     mutations: mutations,
     actions: actions,
 }

@@ -1,13 +1,14 @@
 <template>
     <div id="app">
-        <router-link to="/">Home</router-link>
-        <router-link :to="{ name: 'articles'}">Articles</router-link>
-        <router-link :to="{ name: 'login'}">Login</router-link>
-
+        <navigation></navigation>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue'
+    import Navigation from './Navigation'
+    Vue.component('navigation', Navigation)
+
     export default {}
 </script>
