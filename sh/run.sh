@@ -11,8 +11,18 @@ ROOT_DIR=$(dirname "${BUILD_ROOT_DIR}")
 
 cd ${ROOT_DIR}
 
-php artisan ide-helper:generate
-php artisan ide-helper:meta
-php artisan ide-helper:models --write
+### Run full updating fot the application
 
-echo "Ide data is updated..."
+composer install
+
+npm install
+npm run
+
+php artisan view:clear
+php artisan cache:clear
+php artisan clear-compiled
+php artisan optimize
+
+php artisan migrate:refresh --seed
+
+echo "Done..."
