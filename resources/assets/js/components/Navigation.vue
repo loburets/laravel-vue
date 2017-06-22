@@ -12,17 +12,14 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="/">
+                <router-link class="navbar-brand" to="/">
                     Pet.loc
-                </a>
+                </router-link>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li>
-                        <router-link to="/">Home</router-link>
-                    </li>
                     <li>
                         <router-link :to="{ name: 'articles'}">Articles</router-link>
                     </li>
