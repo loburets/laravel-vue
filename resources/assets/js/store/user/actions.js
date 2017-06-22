@@ -1,5 +1,4 @@
-import { LOGIN_RESPONSE_MUTATION } from './mutations'
-import { LOGOUT_MUTATION } from './mutations'
+import { LOGIN_RESPONSE_MUTATION, LOGIN_ERROR_RESPONSE_MUTATION, LOGOUT_MUTATION } from './mutations'
 
 /**
  * Send credentials to backend
@@ -14,13 +13,21 @@ export const LOGIN_ACTION = 'LOGIN_ACTION'
 export const LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION = 'LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION'
 
 export default {
-    [LOGIN_ACTION] (context, credentials) {
+    [LOGIN_ACTION] (context) {
+
+        let credentials = {
+            email: context.state.inputs.email.value,
+            password: context.state.inputs.password.value,
+        }
 
         return new Promise((resolve, reject) => {
+
             axios.post('/api/jwt-login', credentials).then((response) => {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
                 resolve()
-            }).catch((error) => reject(error.response))
+            }).catch((error) => {
+                context.commit(LOGIN_ERROR_RESPONSE_MUTATION, error)
+            })
         })
     },
     [LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION] (context) {
