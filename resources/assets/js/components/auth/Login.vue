@@ -36,6 +36,7 @@
 
 <script>
     import { LOGIN_ACTION } from '../../store/user/actions'
+    import router from '../../router'
 
     export default {
         data() {
@@ -53,9 +54,12 @@
                     email: this.credentials.email,
                     password: this.credentials.password
                 }
+
+                this.errors = []
+
                 this.$store.dispatch('User/' + LOGIN_ACTION, credentials)
                     .then(() => {
-                        this.errors = []
+                        router.push({ path: '/' })
                     })
                     .catch((error) => this.errors = error.data)
             }
