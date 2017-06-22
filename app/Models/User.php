@@ -25,6 +25,8 @@ use Laravel\Passport\HasApiTokens;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User wherePassword($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
  */
 class User extends Authenticatable
 {

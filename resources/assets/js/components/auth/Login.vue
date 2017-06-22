@@ -1,16 +1,20 @@
 <template>
     <div class="col-sm-4 col-sm-offset-4">
         <h2>Log In</h2>
-        <div class="alert alert-danger" v-if="error">
-            <p>{{ error }}</p>
-        </div>
+        <!--todo move to component-->
         <div class="form-group">
             <input
                     type="text"
                     class="form-control"
-                    placeholder="Enter your username"
-                    v-model="credentials.username"
+                    placeholder="Enter your email"
+                    v-model="credentials.email"
             >
+            <div class="alert alert-danger" v-if="errors.email && typeof errors.email == 'object'" v-for="error in errors.email">
+                {{ error }}
+            </div>
+            <div class="alert alert-danger" v-if="errors.email && typeof errors.email == 'string'">
+                <p>{{ errors.email }}</p>
+            </div>
         </div>
         <div class="form-group">
             <input
@@ -19,8 +23,14 @@
                     placeholder="Enter your password"
                     v-model="credentials.password"
             >
+            <div class="alert alert-danger" v-if="errors.password && typeof errors.password == 'object'" v-for="error in errors.password">
+                {{ error }}
+            </div>
+            <div class="alert alert-danger" v-if="errors.password && typeof errors.password == 'string'">
+                <p>{{ errors.password }}</p>
+            </div>
         </div>
-        <button class="btn btn-primary" @click="submit()">Access</button>
+        <button class="btn btn-primary" @click="submit()">Login</button>
     </div>
 </template>
 
@@ -31,20 +41,23 @@
         data() {
             return {
                 credentials: {
-                    username: '',
+                    email: '',
                     password: ''
                 },
-                error: ''
+                errors: []
             }
         },
         methods: {
             submit() {
                 let credentials = {
-                    username: this.credentials.username,
+                    email: this.credentials.email,
                     password: this.credentials.password
                 }
-                //todo .then Redirect to a specified route
-                this.$store.dispatch('user/' + LOGIN_ACTION, credentials)
+                this.$store.dispatch('User/' + LOGIN_ACTION, credentials)
+                    .then(() => {
+                        this.errors = []
+                    })
+                    .catch((error) => this.errors = error.data)
             }
         }
 

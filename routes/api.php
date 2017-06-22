@@ -15,12 +15,13 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->group(function () {
 
-    Auth::routes();
+//    Auth::routes();
+    Route::post('jwt-login', 'Auth\LoginController@jwtLogin');
     Route::get('article', 'ArticleController@index');
 });
 
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware(['auth', 'jwt.auth'])->group(function () {
     Route::resource(
         'article',
         'ArticleController',
