@@ -20,5 +20,4 @@ new Vue({
  * Update button instead autoupdate?
  * Header
  * Vue tests
- * rename store/Article to lower case
  **/
