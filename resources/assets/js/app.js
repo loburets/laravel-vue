@@ -14,10 +14,9 @@ new Vue({
 
 /**
  * TODO:
- * Registration/login/logout: see https://auth0.com/blog/build-an-app-with-vuejs/ https://github.com/muzichen/laravel-vue-jwt
+ * Registration
  * Remove Passport
  * CRUD
  * Update button instead autoupdate?
- * Header
  * Vue tests
  **/
