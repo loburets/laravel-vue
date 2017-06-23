@@ -11,6 +11,7 @@
     import { CREATE_ARTICLE_ACTION } from 'store/article/actions'
     import router from 'router'
     import Vue from 'vue'
+    import CheckAuth from 'components/mixins/Check-auth'
 
     import simpleInput from 'components/input/Simpe-input.vue'
     Vue.component('simple-input', simpleInput)
@@ -25,5 +26,6 @@
                     })
             },
         },
+        mixins: [CheckAuth],
     }
 </script>
