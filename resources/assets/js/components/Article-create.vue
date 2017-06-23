@@ -9,6 +9,7 @@
 
 <script>
     import { CREATE_ARTICLE_ACTION } from 'store/article/actions'
+    import { ADD_MESSAGE_MUTATION } from 'store/message/mutations'
     import router from 'router'
     import Vue from 'vue'
     import CheckAuth from 'components/mixins/Check-auth'
@@ -23,6 +24,7 @@
                 this.$store.dispatch('Article/' + CREATE_ARTICLE_ACTION)
                     .then(() => {
                         router.push('articles')
+                        this.$store.commit('Message/' + ADD_MESSAGE_MUTATION, 'The article has been created')
                     })
             },
         },
