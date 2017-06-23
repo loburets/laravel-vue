@@ -36,7 +36,10 @@ export default {
             axios.get('/api/article', { params: { page: page } }).then((response) => {
                 context.commit(LOADED_ARTICLES_MUTATION, response)
                 resolve()
-            }).catch((error) => { console.log(error.response.data); reject(); })
+            }).catch((error) => {
+                console.log(error.response.data)
+                reject()
+            })
         })
     },
     [CREATE_ARTICLE_ACTION] (context) {
@@ -47,6 +50,7 @@ export default {
                 resolve()
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
+                reject()
             })
         })
     },
@@ -58,7 +62,10 @@ export default {
                     .then(() => {
                         resolve()
                     })
-            }).catch((error) => { console.log(error.response.data); reject(); })
+            }).catch((error) => {
+                console.log(error.response.data)
+                reject()
+            })
         })
     },
 }

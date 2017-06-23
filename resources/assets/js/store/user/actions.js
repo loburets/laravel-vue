@@ -30,6 +30,7 @@ export default {
                 resolve()
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
+                reject()
             })
         })
     },
@@ -43,6 +44,7 @@ export default {
                 resolve()
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
+                reject()
             })
         })
     },
@@ -61,7 +63,10 @@ export default {
             }).then((response) => {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
                 resolve()
-            }).catch((error) => context.commit(LOGOUT_MUTATION))
+            }).catch((error) => {
+                context.commit(LOGOUT_MUTATION)
+                reject()
+            })
         })
     },
 }

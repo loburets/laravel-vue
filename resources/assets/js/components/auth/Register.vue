@@ -1,5 +1,6 @@
 <template>
     <div class="col-sm-4 col-sm-offset-4">
+        <preloader v-show="!loaded"></preloader>
         <h2>Register</h2>
         <simple-input type="text" placeholder="Enter your name" name="name" store="User"></simple-input>
         <simple-input type="text" placeholder="Enter your email" name="email" store="User"></simple-input>
@@ -19,11 +20,20 @@
 
     export default {
 
+        data: function () {
+            return {
+                loaded: true
+            }
+        },
         methods: {
             submit() {
+                this.loaded = false
                 this.$store.dispatch('User/' + REGISTER_ACTION)
                     .then(() => {
                         router.push({ path: '/' })
+                        this.loaded = true
+                    }).catch((error) => {
+                        this.loaded = true
                     })
             },
         },
