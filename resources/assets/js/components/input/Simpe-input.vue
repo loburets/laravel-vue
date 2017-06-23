@@ -1,7 +1,14 @@
 <template>
     <div class="form-group">
-        <!--todo type-->
+        <!--you can't await the duplication properly :(-->
         <input
+            v-if="type == 'text'" type="text"
+            class="form-control"
+            :placeholder="placeholder"
+            v-model="inputValue"
+        >
+        <input
+            v-if="type == 'password'" type="password"
             class="form-control"
             :placeholder="placeholder"
             v-model="inputValue"
