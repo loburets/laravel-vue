@@ -4,6 +4,8 @@
  *
  * axios.post(/some-url', someDataFromYourStore.inputs).then((response) => {
  *      //something what you want
+ *      //then reset data of inputs
+ *      context.commit(RESET_INPUTS_MUTATION)
  * }).catch((error) => {
  *    //catch the laravel validation response, just to add this:
  *    context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
@@ -24,6 +26,12 @@ export const UPDATE_INPUTS_ERRORS_MUTATION = 'UPDATE_INPUTS_ERRORS_MUTATION'
 export const UPDATE_INPUT_MUTATION = 'UPDATE_INPUT_MUTATION'
 
 /**
+ * Reset inputs data after end of work with component
+ * @type {string}
+ */
+export const RESET_INPUTS_MUTATION = 'RESET_INPUTS_MUTATION'
+
+/**
  * Add this mutations to your vuex store
  *
  * @type {{[UPDATE_INPUTS_ERRORS_MUTATION]: ((state, error)), [UPDATE_INPUT_MUTATION]: ((state, input))}}
@@ -33,16 +41,11 @@ export let inputMutations = {
          state.inputsErrors = error.response.data
      },
      [UPDATE_INPUT_MUTATION] (state, input) {
-
-         if (typeof(state.inputs) !== 'object') {
-             state.inputs = {}
-         }
-
-         if (typeof(state.inputs[input.name]) !== 'object') {
-             state.inputs[input.name] = {}
-         }
-
-         state.inputs[input.name].value = input.value
+         state.inputs[input.name] = input.value
+     },
+     [RESET_INPUTS_MUTATION] (state) {
+         state.inputs = {}
+         state.inputsErrors = {}
      },
 }
 

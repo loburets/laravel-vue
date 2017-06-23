@@ -1,5 +1,5 @@
 import { LOGIN_RESPONSE_MUTATION,  LOGOUT_MUTATION } from './mutations'
-import { UPDATE_INPUTS_ERRORS_MUTATION } from 'components/input'
+import { UPDATE_INPUTS_ERRORS_MUTATION, RESET_INPUTS_MUTATION } from 'components/input'
 
 /**
  * Send credentials to backend
@@ -11,7 +11,7 @@ export const LOGIN_ACTION = 'LOGIN_ACTION'
  * Send credentials to backend
  * @type {string}
  */
-export const REGISTER_ACTION = 'LOGIN_ACTION'
+export const REGISTER_ACTION = 'REGISTER_ACTION'
 
 /**
  * Check token at the local storage
@@ -22,15 +22,11 @@ export const LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION = 'LOCAL_STORAGE_LOGIN_ATTEMPT_A
 export default {
     [LOGIN_ACTION] (context) {
 
-        let credentials = {
-            email: context.state.inputs.email.value,
-            password: context.state.inputs.password.value,
-        }
-
         return new Promise((resolve, reject) => {
 
-            axios.post('/api/jwt-login', credentials).then((response) => {
+            axios.post('/api/jwt-login', context.state.inputs).then((response) => {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
+                context.commit(RESET_INPUTS_MUTATION)
                 resolve()
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
@@ -39,17 +35,11 @@ export default {
     },
     [REGISTER_ACTION] (context) {
 
-        let credentials = {
-            email: context.state.inputs.email.value,
-            name: context.state.inputs.name.value,
-            password: context.state.inputs.password.value,
-            password_confirmation: context.state.inputs.password_confirmation.value,
-        }
-
         return new Promise((resolve, reject) => {
 
-            axios.post('/api/jwt-register', credentials).then((response) => {
+            axios.post('/api/jwt-register', context.state.inputs).then((response) => {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
+                context.commit(RESET_INPUTS_MUTATION)
                 resolve()
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
