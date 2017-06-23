@@ -6,10 +6,10 @@
             :placeholder="placeholder"
             v-model="inputValue"
         >
-        <div class="alert alert-danger" v-if="errors[name] && typeof errors[name] == 'object'" v-for="error in errors[name]">
+        <div class="label label-danger" v-if="errors[name] && typeof errors[name] == 'object'" v-for="error in errors[name]">
             {{ error }}
         </div>
-        <div class="alert alert-danger" v-if="errors[name] && typeof errors[name] == 'string'">
+        <div class="label label-danger" v-if="errors[name] && typeof errors[name] == 'string'">
             <p>{{ errors[name] }}</p>
         </div>
     </div>
@@ -23,23 +23,26 @@
                 inputValue: '',
             }
         },
-        watch: {
-            inputValue: function (inputValue) {
-                this.$store.commit(this.store + '/UPDATE_INPUT_MUTATION', { 'name': this.name, 'value': inputValue })
-            }
+        created() {
+            this.$store.commit(this.store + '/UPDATE_INPUT_MUTATION', { 'name': this.name, 'value': this.inputValue })
         },
-        //without mapping for props using
+        watch: {
+            inputValue: function (newInputValue) {
+                this.$store.commit(this.store + '/UPDATE_INPUT_MUTATION', { 'name': this.name, 'value': newInputValue })
+            },
+        },
         computed: {
-            //todo
             errors: function () {
-                let store = this.$store.state[this.store];
-
-                if (typeof(store.inputsErrors) !== 'object') {
-                    store.inputsErrors = {}
-                }
-
-                return store.inputsErrors
+                return this.$store.state[this.store].inputsErrors
             },
         },
     }
 </script>
+
+<style scoped>
+    .label {
+        display: inline-block;
+        font-size: 90%;
+        margin: 8px 5px 0 0;
+    }
+</style>

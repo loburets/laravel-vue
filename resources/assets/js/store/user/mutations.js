@@ -22,14 +22,18 @@ export const LOGOUT_MUTATION = 'LOGOUT_MUTATION'
  */
 export const UPDATE_INPUT_MUTATION = 'UPDATE_INPUT_MUTATION'
 
+/**
+ * Update value of input in the store
+ * @type {string}
+ */
+export const MAKE_INPUT_ERRORS_MUTATION = 'MAKE_INPUT_ERRORS_MUTATION'
+
 export default {
     [LOGIN_RESPONSE_MUTATION] (state, response) {
 
         let token = response.data.token
 
         if (typeof(token) !== 'string' || token.length === 0) {
-            //todo
-            // state.commit(LOGOUT_MUTATION)
             return
         }
 
@@ -46,10 +50,8 @@ export default {
         state.email = ''
         localStorage.setItem('token', '')
     },
+    //todo move to abstract input file
     [LOGIN_ERROR_RESPONSE_MUTATION] (state, error) {
-
-        //todo
-        // state.commit(LOGOUT_MUTATION)
         state.inputsErrors = error.response.data
     },
     //todo move to abstract input file
@@ -64,5 +66,16 @@ export default {
         }
 
         state.inputs[input.name].value = input.value
+    },
+    //todo move to abstract input file
+    [MAKE_INPUT_ERRORS_MUTATION] (state, name) {
+
+        if (typeof(state.inputsErrors) !== 'object') {
+            state.inputsErrors = {}
+        }
+
+        if (typeof(state.inputsErrors[name]) === 'undefined') {
+            state.inputsErrors[name] = ''
+        }
     },
 }

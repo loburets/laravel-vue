@@ -7,6 +7,9 @@ export default {
         token: '',
         email: '',
         authorized: false,
+        //todo different file
+        inputs: {},
+        inputsErrors: {},
     },
     mutations: mutations,
     actions: actions,
