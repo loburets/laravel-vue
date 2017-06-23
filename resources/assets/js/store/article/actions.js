@@ -1,10 +1,17 @@
 import { LOADED_ARTICLES_MUTATION, NOT_LOADED_MUTATION } from './mutations'
+import { UPDATE_INPUTS_ERRORS_MUTATION, RESET_INPUTS_MUTATION } from 'components/input'
 
 /**
  * Load articles from backend
  * @type {string}
  */
 export const LOAD_ARTICLES_ACTION = 'LOAD_ARTICLES_ACTION'
+
+/**
+ * Create new article
+ * @type {string}
+ */
+export const CREATE_ARTICLE_ACTION = 'CREATE_ARTICLE_ACTION'
 
 export default {
     [LOAD_ARTICLES_ACTION] (context, page) {
@@ -20,6 +27,17 @@ export default {
                 context.commit(LOADED_ARTICLES_MUTATION, response)
                 resolve()
             }).catch((error) => { console.log(error.response.data); reject(); })
+        })
+    },
+    [CREATE_ARTICLE_ACTION] (context) {
+
+        return new Promise((resolve, reject) => {
+            axios.post('/api/article', context.state.inputs).then((response) => {
+                context.commit(RESET_INPUTS_MUTATION)
+                resolve()
+            }).catch((error) => {
+                context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
+            })
         })
     },
 }

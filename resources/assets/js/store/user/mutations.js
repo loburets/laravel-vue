@@ -34,5 +34,5 @@ export default {
         state.email = ''
         localStorage.setItem('token', '')
     },
-    ...inputMutations
+    ...inputMutations,
 }

@@ -20,9 +20,8 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li>
-                        <router-link :to="{ name: 'articles'}">Articles</router-link>
-                    </li>
+                    <li><router-link :to="{ name: 'articles'}">Articles</router-link></li>
+                    <li v-if="authorized"><router-link :to="{ name: 'createArticle'}">Create article</router-link></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

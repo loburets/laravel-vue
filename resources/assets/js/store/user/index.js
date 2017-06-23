@@ -8,7 +8,7 @@ export default {
         token: '',
         email: '',
         authorized: false,
-        ...inputStateVariables
+        ...inputStateVariables,
     },
     mutations: mutations,
     actions: actions,

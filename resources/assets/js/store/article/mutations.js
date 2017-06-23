@@ -1,3 +1,5 @@
+import {inputMutations} from 'components/input'
+
 /**
  * Just update articles in the store
  * @type {string}
@@ -34,4 +36,5 @@ export default {
         state.lastPage = data.last_page
         state.path = data.path
     },
+    ...inputMutations,
 }

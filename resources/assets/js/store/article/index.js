@@ -1,5 +1,6 @@
 import mutations from './mutations'
 import actions from './actions'
+import {inputStateVariables} from 'components/input'
 
 export default {
     namespaced: true,
@@ -10,6 +11,7 @@ export default {
         currentPage: null,
         lastPage: null,
         path: null,
+        ...inputStateVariables,
     },
     mutations: mutations,
     actions: actions,
