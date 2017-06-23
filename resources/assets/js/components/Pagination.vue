@@ -40,7 +40,7 @@
         },
         created() {
             let i, lastPage = this.$store.state[this.storeName].lastPage
-            for (i = 1; i < lastPage; i++) {
+            for (i = 1; i <= lastPage; i++) {
                 this.pages.push(i)
             }
         },

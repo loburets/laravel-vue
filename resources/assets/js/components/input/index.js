@@ -2,6 +2,16 @@
  *
  * How to use:
  *
+ * 1) Add inputMutations mutations to your vuex store:
+ *
+ *      ,...inputMutations,
+ *
+ * 2) Add this inputStateVariables to your vuex store initial state
+ *
+ *      ,...inputStateVariables,
+ *
+ * 3) In your action:
+ *
  * axios.post(/some-url', someDataFromYourStore.inputs).then((response) => {
  *      //something what you want
  *      //then reset data of inputs
@@ -10,6 +20,8 @@
  *    //catch the laravel validation response, just to add this:
  *    context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
  * })
+ *
+ * 4) PROFIT!
  *
  */
 

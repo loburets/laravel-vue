@@ -13,6 +13,12 @@
             :placeholder="placeholder"
             v-model="inputValue"
         >
+        <textarea
+            v-if="type == 'textarea'"
+            class="form-control"
+            :placeholder="placeholder"
+            v-model="inputValue"
+        ></textarea>
         <div class="label label-danger" v-if="errors[name] && typeof errors[name] == 'object'" v-for="error in errors[name]">
             {{ error }}
         </div>
