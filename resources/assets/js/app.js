@@ -17,9 +17,9 @@ new Vue({
 
 /**
  * TODO:
- * Registration
- * Remove Passport
- * CRUD
- * Update button instead autoupdate?
+ * resources/assets/js/components/mixins/Check-auth.vue
+ * Preloaders style
+ * Article editing
+ * Update button
  * Vue tests
  **/

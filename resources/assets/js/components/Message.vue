@@ -18,14 +18,12 @@
     export default {
         computed: mapState({
             messages: state => state.Message.messages,
+            route: state => state.route,
         }),
-        beforeRouteLeave (to, from, next) {
-            this.$store.commit('Message/' + REMOVE_ALL_MESSAGES_MUTATION)
-            next()
-        },
-        beforeRouteUpdate (to, from, next) {
-            this.$store.commit('Message/' + REMOVE_ALL_MESSAGES_MUTATION)
-            next()
+        watch: {
+            route: function (newRoute) {
+                this.$store.commit('Message/' + REMOVE_ALL_MESSAGES_MUTATION)
+            },
         },
     }
 </script>
