@@ -36,6 +36,10 @@
         created() {
             this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, this.$route.params.page)
         },
+        beforeRouteLeave (to, from, next) {
+            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, to.params.page)
+            next()
+        },
         beforeRouteUpdate (to, from, next) {
             this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, to.params.page)
             next()
