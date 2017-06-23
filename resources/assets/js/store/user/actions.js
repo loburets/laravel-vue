@@ -1,4 +1,5 @@
-import { LOGIN_RESPONSE_MUTATION, LOGIN_ERROR_RESPONSE_MUTATION, LOGOUT_MUTATION } from './mutations'
+import { LOGIN_RESPONSE_MUTATION,  LOGOUT_MUTATION } from './mutations'
+import { UPDATE_INPUTS_ERRORS_MUTATION } from '../../components/input'
 
 /**
  * Send credentials to backend
@@ -26,7 +27,7 @@ export default {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
                 resolve()
             }).catch((error) => {
-                context.commit(LOGIN_ERROR_RESPONSE_MUTATION, error)
+                context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
             })
         })
     },

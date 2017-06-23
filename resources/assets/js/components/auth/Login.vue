@@ -13,7 +13,7 @@
     import router from '../../router'
     import Vue from 'vue'
 
-    import simpleInput from '../Simpe-input.vue'
+    import simpleInput from '../input/Simpe-input.vue'
     Vue.component('simple-input', simpleInput)
 
     export default {

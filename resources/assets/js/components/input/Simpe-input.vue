@@ -10,7 +10,7 @@
             {{ error }}
         </div>
         <div class="label label-danger" v-if="errors[name] && typeof errors[name] == 'string'">
-            <p>{{ errors[name] }}</p>
+            {{ errors[name] }}
         </div>
     </div>
 </template>

@@ -1,3 +1,5 @@
+import {inputMutations} from '../../components/input'
+
 /**
  * Process login response
  * @type {string}
@@ -5,28 +7,10 @@
 export const LOGIN_RESPONSE_MUTATION = 'LOGIN_RESPONSE_MUTATION'
 
 /**
- * Process login response in error case
- * @type {string}
- */
-export const LOGIN_ERROR_RESPONSE_MUTATION = 'LOGIN_ERROR_RESPONSE_MUTATION'
-
-/**
  * Remove token and user's data
  * @type {string}
  */
 export const LOGOUT_MUTATION = 'LOGOUT_MUTATION'
-
-/**
- * Update value of input in the store
- * @type {string}
- */
-export const UPDATE_INPUT_MUTATION = 'UPDATE_INPUT_MUTATION'
-
-/**
- * Update value of input in the store
- * @type {string}
- */
-export const MAKE_INPUT_ERRORS_MUTATION = 'MAKE_INPUT_ERRORS_MUTATION'
 
 export default {
     [LOGIN_RESPONSE_MUTATION] (state, response) {
@@ -50,32 +34,5 @@ export default {
         state.email = ''
         localStorage.setItem('token', '')
     },
-    //todo move to abstract input file
-    [LOGIN_ERROR_RESPONSE_MUTATION] (state, error) {
-        state.inputsErrors = error.response.data
-    },
-    //todo move to abstract input file
-    [UPDATE_INPUT_MUTATION] (state, input) {
-
-        if (typeof(state.inputs) !== 'object') {
-            state.inputs = {}
-        }
-
-        if (typeof(state.inputs[input.name]) !== 'object') {
-            state.inputs[input.name] = {}
-        }
-
-        state.inputs[input.name].value = input.value
-    },
-    //todo move to abstract input file
-    [MAKE_INPUT_ERRORS_MUTATION] (state, name) {
-
-        if (typeof(state.inputsErrors) !== 'object') {
-            state.inputsErrors = {}
-        }
-
-        if (typeof(state.inputsErrors[name]) === 'undefined') {
-            state.inputsErrors[name] = ''
-        }
-    },
+    ...inputMutations
 }

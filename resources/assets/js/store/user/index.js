@@ -1,5 +1,6 @@
 import mutations from './mutations'
 import actions from './actions'
+import {inputStateVariables} from '../../components/input'
 
 export default {
     namespaced: true,
@@ -7,9 +8,7 @@ export default {
         token: '',
         email: '',
         authorized: false,
-        //todo different file
-        inputs: {},
-        inputsErrors: {},
+        ...inputStateVariables
     },
     mutations: mutations,
     actions: actions,
