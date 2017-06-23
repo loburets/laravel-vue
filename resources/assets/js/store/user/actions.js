@@ -8,6 +8,12 @@ import { UPDATE_INPUTS_ERRORS_MUTATION } from 'components/input'
 export const LOGIN_ACTION = 'LOGIN_ACTION'
 
 /**
+ * Send credentials to backend
+ * @type {string}
+ */
+export const REGISTER_ACTION = 'LOGIN_ACTION'
+
+/**
  * Check token at the local storage
  * @type {string}
  */
@@ -24,6 +30,25 @@ export default {
         return new Promise((resolve, reject) => {
 
             axios.post('/api/jwt-login', credentials).then((response) => {
+                context.commit(LOGIN_RESPONSE_MUTATION, response)
+                resolve()
+            }).catch((error) => {
+                context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
+            })
+        })
+    },
+    [REGISTER_ACTION] (context) {
+
+        let credentials = {
+            email: context.state.inputs.email.value,
+            name: context.state.inputs.name.value,
+            password: context.state.inputs.password.value,
+            password_confirmation: context.state.inputs.password_confirmation.value,
+        }
+
+        return new Promise((resolve, reject) => {
+
+            axios.post('/api/jwt-register', credentials).then((response) => {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
                 resolve()
             }).catch((error) => {
