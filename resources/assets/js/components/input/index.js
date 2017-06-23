@@ -48,7 +48,7 @@ export let inputMutations = {
 
 /**
  * Add this variables to your vuex store initial state
- * 
+ *
  * @type {{inputs: {}, inputsErrors: {}}}
  */
 export let inputStateVariables = {

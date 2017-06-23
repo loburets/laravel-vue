@@ -12,6 +12,14 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .mix.webpackConfig({
+        resolve: {
+            modules: [
+                path.resolve('./resources/assets/js'),
+                path.resolve('./node_modules'),
+            ]
+        }
+    })
     .sourceMaps()
     .sass('resources/assets/sass/app.scss', 'public/css')
     .mix.browserSync('pet.loc');

@@ -10,7 +10,7 @@
     import Navigation from './Navigation'
     Vue.component('navigation', Navigation)
 
-    import { LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION } from '../store/user/actions'
+    import { LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION } from 'store/user/actions'
 
     export default {
         created() {

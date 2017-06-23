@@ -1,5 +1,5 @@
 import { LOGIN_RESPONSE_MUTATION,  LOGOUT_MUTATION } from './mutations'
-import { UPDATE_INPUTS_ERRORS_MUTATION } from '../../components/input'
+import { UPDATE_INPUTS_ERRORS_MUTATION } from 'components/input'
 
 /**
  * Send credentials to backend

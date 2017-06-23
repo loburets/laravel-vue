@@ -1,4 +1,4 @@
-import {inputMutations} from '../../components/input'
+import {inputMutations} from 'components/input'
 
 /**
  * Process login response

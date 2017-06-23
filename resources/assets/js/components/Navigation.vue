@@ -51,7 +51,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import { LOGOUT_MUTATION } from '../store/user/mutations'
+    import { LOGOUT_MUTATION } from 'store/user/mutations'
 
     export default {
         computed: mapState({
