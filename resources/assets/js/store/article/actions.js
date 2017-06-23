@@ -13,8 +13,18 @@ export const LOAD_ARTICLES_ACTION = 'LOAD_ARTICLES_ACTION'
  */
 export const CREATE_ARTICLE_ACTION = 'CREATE_ARTICLE_ACTION'
 
+/**
+ * Delete article
+ * @type {string}
+ */
+export const DELETE_ARTICLE_ACTION = 'DELETE_ARTICLE_ACTION'
+
 export default {
     [LOAD_ARTICLES_ACTION] (context, page) {
+
+        if (typeof(page) === 'undefined') {
+            page = context.state.currentPage
+        }
 
         if (typeof(page) === 'undefined') {
             page = 1
@@ -38,6 +48,17 @@ export default {
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
             })
+        })
+    },
+    [DELETE_ARTICLE_ACTION] (context, id) {
+
+        return new Promise((resolve, reject) => {
+            axios.post('/api/article/' + id, { '_method' : 'DELETE' }).then((response) => {
+                context.dispatch(LOAD_ARTICLES_ACTION)
+                    .then(() => {
+                        resolve()
+                    })
+            }).catch((error) => { console.log(error.response.data); reject(); })
         })
     },
 }
