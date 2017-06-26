@@ -11,13 +11,14 @@ ROOT_DIR=$(dirname "${BUILD_ROOT_DIR}")
 
 cd ${ROOT_DIR}
 
-### Run full updating fot the application
+### Run full updating or installing for the application
 
 composer install
 
 npm install
 npm run
 
+php artisan key:generate
 php artisan view:clear
 php artisan cache:clear
 php artisan clear-compiled

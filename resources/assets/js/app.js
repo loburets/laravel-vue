@@ -18,7 +18,9 @@ new Vue({
 /**
  * TODO:
  * resources/assets/js/components/mixins/Check-auth.vue
+ * Submit by enter
  * Preloaders style
+ * Work with notifications
  * Article editing
  * Update button
  * Vue tests
