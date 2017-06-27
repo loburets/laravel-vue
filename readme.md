@@ -1,9 +1,9 @@
-## About
+#### VUE + LARAVEL typical cases
 
 Just a project for technology using
 
 
-## Tips
+#### Tips
 
     #if "npm run dev" doesn't work:
     rm -rf node_modules
@@ -14,8 +14,31 @@ Just a project for technology using
     sudo n stable
     sudo npm install npm@latest -g
     
-### Features
+#### Frontend
 
-- Registration/login components
-- Auth controllers based at default scaffolding laravel controllers, but with additional similar methods for the JWT (JSON Web Tokens) and new middleware 
-- Based at package "tymon/jwt-auth" - laravel JWT implementation
+##### Cases:
+
+- Registration/login
+- Checking of authorization for component via mixins
+- Pagination
+- Flash messages
+- Simple CRUD for one entity
+
+##### What was used:
+
+- ES6
+- Vue
+- Vuex (common FLUX implementation for Vue)
+- Routes    
+
+#### Backend
+
+##### Cases:
+
+- Auth controllers based at default scaffolding laravel controllers, but with additional similar methods for the JWT (JSON Web Tokens) 
+- Auth Middleware for the JWT
+
+##### What was used:
+
+- Laravel 5.4
+- Package "tymon/jwt-auth" - laravel JWT implementation
