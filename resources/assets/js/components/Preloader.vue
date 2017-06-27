@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="l-preloader"></div>
+    <div class="preloader-container">
+        <div class="preloader-background"></div>
         <div class="preloader"></div>
     </div>
 </template>
@@ -10,26 +10,36 @@
 </script>
 
 <style scoped>
+    .preloader-container {
+        position: absolute;
+        width: 100%;
+        height: 110%;
+        min-height: 180px;
+        left: 0;
+        top: -5%;
+        z-index: 10;
+    }
+
     .preloader {
-        border: 16px solid #f3f3f3; /* Light grey */
-        border-top: 16px solid #3498db; /* Blue */
+        border: 16px solid #fff;
+        border-top: 16px solid #4091c7;
         border-radius: 50%;
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
         animation: spin 2s linear infinite;
 
         position: absolute;
         left: 50%;
-        margin-left: -52px;
+        margin-left: -40px;
         top: 50%;
-        margin-top: -52px;
+        margin-top: -40px;
     }
 
-    .l-preloader {
+    .preloader-background {
         width: 100%;
         height: 100%;
-        background: darkgray;
-        opacity: 0.2;
+        background: #cdcdcd;
+        opacity: 0.7;
     }
 
     @keyframes spin {

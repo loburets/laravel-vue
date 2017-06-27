@@ -48,3 +48,9 @@
         },
     }
 </script>
+
+<style scoped>
+    .panel {
+        position: relative;
+    }
+</style>
