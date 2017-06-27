@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-4 col-sm-offset-4">
+    <div class="col-sm-4 col-sm-offset-4" @keyup.enter="submit()">
         <preloader v-show="!loaded"></preloader>
         <h2>Register</h2>
         <simple-input type="text" placeholder="Enter your name" name="name" store="User"></simple-input>
