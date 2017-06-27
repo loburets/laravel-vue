@@ -18,6 +18,18 @@ export const LOADED_ARTICLES_MUTATION = 'LOADED_ARTICLES_MUTATION'
  */
 export const NOT_LOADED_MUTATION = 'NOT_LOADED_MUTATION'
 
+/**
+ * Reset loaded article
+ * @type {string}
+ */
+export const RESET_ARTICLE_MUTATION = 'RESET_ARTICLE_MUTATION'
+
+/**
+ * Update article in the store
+ * @type {string}
+ */
+export const LOADED_ARTICLE_MUTATION = 'LOADED_ARTICLE_MUTATION'
+
 export default {
     [UPDATE_ARTICLES_MUTATION] (state, articles) {
         state.articles = articles
@@ -35,6 +47,14 @@ export default {
         state.currentPage = data.current_page
         state.lastPage = data.last_page
         state.path = data.path
+    },
+    [RESET_ARTICLE_MUTATION] (state) {
+
+        state.article = {}
+    },
+    [LOADED_ARTICLE_MUTATION] (state, response) {
+
+        state.article = response.data
     },
     ...inputMutations,
 }

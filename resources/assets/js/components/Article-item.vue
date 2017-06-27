@@ -7,7 +7,11 @@
             {{ article.text }}
         </div>
 
-        <button v-if="authorized" class="btn btn-primary" @click="deleteArticle(article.id)">Delete</button>
+        <div class="container-fluid row_btns" v-if="authorized" >
+            <button class="btn btn-primary" @click="deleteArticle(article.id)">Delete</button>
+            <router-link :to="{ name: 'articleEdit', params: { id: article.id }}" class="btn btn-primary">Edit</router-link>
+        </div>
+
     </div>
 </template>
 
@@ -43,3 +47,14 @@
         },
     }
 </script>
+
+<style scoped>
+    .btn {
+        margin-right: 5px;
+    }
+    .row_btns {
+        text-align: right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+</style>

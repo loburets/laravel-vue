@@ -1,5 +1,5 @@
-import { LOADED_ARTICLES_MUTATION, NOT_LOADED_MUTATION } from './mutations'
-import { UPDATE_INPUTS_ERRORS_MUTATION, RESET_INPUTS_MUTATION } from 'components/input'
+import { LOADED_ARTICLES_MUTATION, NOT_LOADED_MUTATION, RESET_ARTICLE_MUTATION, LOADED_ARTICLE_MUTATION } from './mutations'
+import { UPDATE_INPUTS_ERRORS_MUTATION, RESET_INPUTS_MUTATION, SET_METHOD_FIELD_MUTATION } from 'components/input'
 
 /**
  * Load articles from backend
@@ -18,6 +18,18 @@ export const CREATE_ARTICLE_ACTION = 'CREATE_ARTICLE_ACTION'
  * @type {string}
  */
 export const DELETE_ARTICLE_ACTION = 'DELETE_ARTICLE_ACTION'
+
+/**
+ * Load article from backend
+ * @type {string}
+ */
+export const LOAD_ARTICLE_ACTION = 'LOAD_ARTICLE_ACTION'
+
+/**
+ * Update article at backend
+ * @type {string}
+ */
+export const UPDATE_ARTICLE_ACTION = 'UPDATE_ARTICLE_ACTION'
 
 export default {
     [LOAD_ARTICLES_ACTION] (context, page) {
@@ -64,6 +76,35 @@ export default {
                     })
             }).catch((error) => {
                 console.log(error.response.data)
+                reject()
+            })
+        })
+    },
+    [LOAD_ARTICLE_ACTION] (context, id) {
+
+        context.commit(RESET_ARTICLE_MUTATION)
+
+        return new Promise((resolve, reject) => {
+            axios.get('/api/article/'+ id).then((response) => {
+                context.commit(LOADED_ARTICLE_MUTATION, response)
+                resolve()
+            }).catch((error) => {
+                console.log(error.response.data)
+                reject()
+            })
+        })
+    },
+    [UPDATE_ARTICLE_ACTION] (context) {
+
+        return new Promise((resolve, reject) => {
+            context.commit(SET_METHOD_FIELD_MUTATION, 'PATCH')
+
+            axios.post('/api/article/' + context.state.article.id, context.state.inputs).then((response) => {
+                context.commit(RESET_INPUTS_MUTATION)
+                context.commit(RESET_ARTICLE_MUTATION)
+                resolve()
+            }).catch((error) => {
+                context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
                 reject()
             })
         })

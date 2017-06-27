@@ -29,7 +29,7 @@ Route::middleware(['jwt.auth'])->group(function () {
         'article',
         'ArticleController',
         [
-            'except' => ['create', 'index', 'show', 'edit', 'update']
+            'except' => ['create', 'index', 'edit']
         ]
     );
 });

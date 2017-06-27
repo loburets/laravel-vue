@@ -6,6 +6,7 @@ export default {
     namespaced: true,
     state: {
         articles: [],
+        article: {},
         loaded: false,
         perPage: null,
         currentPage: null,

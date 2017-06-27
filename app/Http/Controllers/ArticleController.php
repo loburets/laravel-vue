@@ -47,11 +47,11 @@ class ArticleController extends Controller
      * Display the specified resource.
      *
      * @param  Article $article
-     * @return \Illuminate\Http\Response
+     * @return Article|\Illuminate\Http\Response
      */
     public function show(Article $article)
     {
-        //
+        return $article;
     }
 
     /**
@@ -72,9 +72,9 @@ class ArticleController extends Controller
      * @param  Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(ArticleRequest $request, Article $article)
     {
-        //
+        $article->update($request->all());
     }
 
     /**

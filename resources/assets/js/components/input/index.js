@@ -59,6 +59,12 @@ export const UPDATE_INPUT_MUTATION = 'UPDATE_INPUT_MUTATION'
 export const RESET_INPUTS_MUTATION = 'RESET_INPUTS_MUTATION'
 
 /**
+ * Set method for post requests
+ * @type {string}
+ */
+export const SET_METHOD_FIELD_MUTATION = 'SET_METHOD_FIELD_MUTATION'
+
+/**
  * Add this mutations to your vuex store
  *
  * @type {{[UPDATE_INPUTS_ERRORS_MUTATION]: ((state, error)), [UPDATE_INPUT_MUTATION]: ((state, input))}}
@@ -69,6 +75,9 @@ export let inputMutations = {
      },
      [UPDATE_INPUT_MUTATION] (state, input) {
          state.inputs[input.name] = input.value
+     },
+     [SET_METHOD_FIELD_MUTATION] (state, method) {
+         state.inputs['_method'] = method
      },
      [RESET_INPUTS_MUTATION] (state) {
          state.inputs = {}
