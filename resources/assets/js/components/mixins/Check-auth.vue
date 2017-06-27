@@ -4,6 +4,12 @@
     import { mapState } from 'vuex'
 
     export default {
+        created() {
+            if (this.failedLogin) {
+                router.push({ path: '/' })
+                this.$store.commit('Message/' + ADD_MESSAGE_MUTATION, 'You are not authorized')
+            }
+        },
         computed: mapState({
             failedLogin: state => state.User.failedLogin,
         }),
