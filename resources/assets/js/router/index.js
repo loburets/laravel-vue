@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ArticleList from 'components/Article-list'
-import ArticleCreate from 'components/Article-create'
-import ArticleEdit from 'components/Article-edit'
+import ArticleList from 'components/article/Article-list'
+import ArticleCreate from 'components/article/Article-create'
+import ArticleEdit from 'components/article/Article-edit'
 import Login from 'components/auth/Login'
 import Register from 'components/auth/Register'
 

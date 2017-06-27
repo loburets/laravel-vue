@@ -18,9 +18,9 @@
 
 <script>
     import Vue from 'vue'
-    import Preloader from './Preloader'
+    import Preloader from 'components/Preloader'
     import ArticleItem from './Article-item'
-    import Pagination from './Pagination'
+    import Pagination from 'components/Pagination'
     import { mapState } from 'vuex'
     import { LOAD_ARTICLE_LIST_ACTION } from 'store/article/actions'
 
