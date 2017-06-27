@@ -4,6 +4,7 @@
     import { mapState } from 'vuex'
 
     export default {
+        //if already trying to login
         created() {
             if (this.failedLogin) {
                 router.push({ path: '/' })
@@ -14,6 +15,7 @@
             failedLogin: state => state.User.failedLogin,
         }),
         watch: {
+            //wait initial login after page loading
             failedLogin: function (failedLogin) {
                 if (failedLogin) {
                     router.push({ path: '/' })

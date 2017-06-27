@@ -17,6 +17,8 @@ new Vue({
 
 /**
  * TODO:
- * Preloaders style
  * Vue tests
+ * Dusk tests
+ * Usual tests
+ * Readme.md
  **/
