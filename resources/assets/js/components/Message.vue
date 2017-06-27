@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2" v-for="message in messages">
                 <div class="alert alert-info">
-                    {{ message }}
+                    {{ message.text }}
                 </div>
 
             </div>
@@ -13,7 +13,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import { REMOVE_ALL_MESSAGES_MUTATION } from 'store/message/mutations'
+    import { REMOVE_READED, MARK_AS_READED } from 'store/message/mutations'
 
     export default {
         computed: mapState({
@@ -22,7 +22,10 @@
         }),
         watch: {
             route: function (newRoute) {
-                this.$store.commit('Message/' + REMOVE_ALL_MESSAGES_MUTATION)
+                this.$store.commit('Message/' + REMOVE_READED)
+            },
+            messages: function (newMessage) {
+                this.$store.commit('Message/' + MARK_AS_READED)
             },
         },
     }
