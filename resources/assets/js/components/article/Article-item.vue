@@ -10,6 +10,7 @@
         <div class="container-fluid row_btns" v-if="authorized" >
             <button class="btn btn-primary" @click="deleteArticle(article.id)">Delete</button>
             <router-link :to="{ name: 'articleEdit', params: { id: article.id }}" class="btn btn-primary">Edit</router-link>
+            <router-link :to="{ name: 'article', params: { id: article.id }}" class="btn btn-primary">Show</router-link>
         </div>
 
     </div>
@@ -47,14 +48,3 @@
         },
     }
 </script>
-
-<style scoped>
-    .btn {
-        margin-right: 5px;
-    }
-    .row_btns {
-        text-align: right;
-        padding-right: 10px;
-        padding-bottom: 10px;
-    }
-</style>

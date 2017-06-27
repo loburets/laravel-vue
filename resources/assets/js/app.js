@@ -18,7 +18,5 @@ new Vue({
 /**
  * TODO:
  * Preloaders style
- * Article editing
- * Update button
  * Vue tests
  **/
