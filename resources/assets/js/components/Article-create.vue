@@ -11,6 +11,7 @@
 <script>
     import { CREATE_ARTICLE_ACTION } from 'store/article/actions'
     import { ADD_MESSAGE_MUTATION } from 'store/message/mutations'
+    import { RESET_INPUTS_MUTATION } from 'components/input'
     import router from 'router'
     import Vue from 'vue'
     import CheckAuth from 'components/mixins/Check-auth'
@@ -39,6 +40,10 @@
             return {
                 loaded: true
             }
+        },
+        beforeRouteLeave (to, from, next) {
+            this.$store.commit('Article/' + RESET_INPUTS_MUTATION)
+            next()
         },
     }
 </script>

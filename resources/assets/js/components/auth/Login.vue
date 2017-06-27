@@ -10,6 +10,7 @@
 
 <script>
     import { LOGIN_ACTION } from 'store/user/actions'
+    import { RESET_INPUTS_MUTATION } from 'components/input'
     import router from 'router'
     import Vue from 'vue'
 
@@ -35,6 +36,10 @@
                         this.loaded = true
                     })
             },
+        },
+        beforeRouteLeave (to, from, next) {
+            this.$store.commit('User/' + RESET_INPUTS_MUTATION)
+            next()
         },
     }
 </script>
