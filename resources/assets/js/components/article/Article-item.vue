@@ -7,9 +7,9 @@
             {{ article.text }}
         </div>
 
-        <div class="container-fluid row_btns" v-if="authorized" >
-            <button class="btn btn-primary" @click="deleteArticle(article.id)">Delete</button>
-            <router-link :to="{ name: 'articleEdit', params: { id: article.id }}" class="btn btn-primary">Edit</router-link>
+        <div class="container-fluid row_btns">
+            <button class="btn btn-primary" @click="deleteArticle(article.id)" v-if="authorized">Delete</button>
+            <router-link :to="{ name: 'articleEdit', params: { id: article.id }}" class="btn btn-primary" v-if="authorized">Edit</router-link>
             <router-link :to="{ name: 'article', params: { id: article.id }}" class="btn btn-primary">Show</router-link>
         </div>
 

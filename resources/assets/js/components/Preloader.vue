@@ -39,7 +39,7 @@
         width: 100%;
         height: 100%;
         background: #cdcdcd;
-        opacity: 0.7;
+        opacity: 0.8;
     }
 
     @keyframes spin {
