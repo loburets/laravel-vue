@@ -16,11 +16,12 @@ export default {
         state.messages = []
     },
     [REMOVE_READ_MUTATION] (state) {
-        state.messages.forEach(function(message, i, arr) {
-            if (message.isReaded === true) {
+        let i = state.messages.length
+        while (i--) {
+            if (state.messages[i].isReaded === true) {
                 state.messages.splice(i, 1);
             }
-        });
+        }
     },
     [MARK_ALL_AS_READ_MUTATION] (state) {
         state.messages.forEach(function(message, i, arr) {
@@ -28,10 +29,11 @@ export default {
         });
     },
     [REMOVE_MUTATION] (state, id) {
-        state.messages.forEach(function(message, i, arr) {
-            if (message.id == id) {
+        let i = state.messages.length
+        while (i--) {
+            if (state.messages[i].id === id) {
                 state.messages.splice(i, 1)
             }
-        });
+        }
     },
 }
