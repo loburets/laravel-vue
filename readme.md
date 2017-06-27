@@ -83,11 +83,11 @@ Here you can see how to create some application based at Vue and Laravel with mo
 ### How to install
 
 ```bash
-    git clone
-    # copy .env.example to .env 
-    # add your database (mysql 5.7+) credentials
-    sh sh/run.sh
-    npm run watch
+git clone
+# copy .env.example to .env 
+# add your database (mysql 5.7+) credentials
+sh sh/run.sh
+npm run watch
 ```
 
 Run tests
