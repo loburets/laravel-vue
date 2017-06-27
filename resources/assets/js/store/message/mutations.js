@@ -1,7 +1,7 @@
 export const ADD_MESSAGE_MUTATION = 'ADD_MESSAGE_MUTATION'
 export const REMOVE_ALL_MESSAGES_MUTATION = 'REMOVE_ALL_MESSAGES_MUTATION'
 export const REMOVE_READ_MUTATION = 'REMOVE_READ_MUTATION'
-export const MARK_AS_READ_MUTATION = 'MARK_AS_READ_MUTATION'
+export const MARK_ALL_AS_READ_MUTATION = 'MARK_ALL_AS_READ_MUTATION'
 export const REMOVE_MUTATION = 'REMOVE_MUTATION'
 
 export default {
@@ -22,7 +22,7 @@ export default {
             }
         });
     },
-    [MARK_AS_READ_MUTATION] (state) {
+    [MARK_ALL_AS_READ_MUTATION] (state) {
         state.messages.forEach(function(message, i, arr) {
             state.messages[i].isReaded = true;
         });

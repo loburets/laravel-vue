@@ -4,19 +4,19 @@ import {inputMutations} from 'components/input'
  * Just update articles in the store
  * @type {string}
  */
-export const UPDATE_ARTICLES_MUTATION = 'UPDATE_ARTICLES_MUTATION'
+export const UPDATE_ARTICLE_LIST_MUTATION = 'UPDATE_ARTICLE_LIST_MUTATION'
 
 /**
  * Proceed response after articles loading
  * @type {string}
  */
-export const LOADED_ARTICLES_MUTATION = 'LOADED_ARTICLES_MUTATION'
+export const PROCESS_ARTICLE_LIST_RESPONSE_MUTATION = 'PROCESS_ARTICLE_LIST_RESPONSE_MUTATION'
 
 /**
  * Set loaded state to false
  * @type {string}
  */
-export const NOT_LOADED_MUTATION = 'NOT_LOADED_MUTATION'
+export const ARTICLE_LIST_NOT_LOADED_MUTATION = 'ARTICLE_LIST_NOT_LOADED_MUTATION'
 
 /**
  * Reset loaded article
@@ -28,17 +28,17 @@ export const RESET_ARTICLE_MUTATION = 'RESET_ARTICLE_MUTATION'
  * Update article in the store
  * @type {string}
  */
-export const LOADED_ARTICLE_MUTATION = 'LOADED_ARTICLE_MUTATION'
+export const PROCESS_ARTICLE_RESPONSE_MUTATION = 'PROCESS_ARTICLE_RESPONSE_MUTATION'
 
 export default {
-    [UPDATE_ARTICLES_MUTATION] (state, articles) {
+    [UPDATE_ARTICLE_LIST_MUTATION] (state, articles) {
         state.articles = articles
     },
-    [NOT_LOADED_MUTATION] (state) {
+    [ARTICLE_LIST_NOT_LOADED_MUTATION] (state) {
         state.loaded = false
         state.articles = []
     },
-    [LOADED_ARTICLES_MUTATION] (state, response) {
+    [PROCESS_ARTICLE_LIST_RESPONSE_MUTATION] (state, response) {
         let data = response.data
 
         state.articles = data.data
@@ -52,7 +52,7 @@ export default {
 
         state.article = {}
     },
-    [LOADED_ARTICLE_MUTATION] (state, response) {
+    [PROCESS_ARTICLE_RESPONSE_MUTATION] (state, response) {
 
         state.article = response.data
     },

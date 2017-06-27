@@ -22,7 +22,7 @@
     import ArticleItem from './Article-item'
     import Pagination from './Pagination'
     import { mapState } from 'vuex'
-    import { LOAD_ARTICLES_ACTION } from 'store/article/actions'
+    import { LOAD_ARTICLE_LIST_ACTION } from 'store/article/actions'
 
     Vue.component('preloader', Preloader)
     Vue.component('article-item', ArticleItem)
@@ -34,14 +34,14 @@
             loaded: state => state.Article.loaded,
         }),
         created() {
-            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, this.$route.params.page)
+            this.$store.dispatch('Article/' + LOAD_ARTICLE_LIST_ACTION, this.$route.params.page)
         },
         beforeRouteLeave (to, from, next) {
-            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, to.params.page)
+            this.$store.dispatch('Article/' + LOAD_ARTICLE_LIST_ACTION, to.params.page)
             next()
         },
         beforeRouteUpdate (to, from, next) {
-            this.$store.dispatch('Article/' + LOAD_ARTICLES_ACTION, to.params.page)
+            this.$store.dispatch('Article/' + LOAD_ARTICLE_LIST_ACTION, to.params.page)
             next()
         },
     }

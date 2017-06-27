@@ -13,7 +13,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import { REMOVE_READ_MUTATION, MARK_AS_READ_MUTATION, REMOVE_MUTATION } from 'store/message/mutations'
+    import { REMOVE_READ_MUTATION, MARK_ALL_AS_READ_MUTATION, REMOVE_MUTATION } from 'store/message/mutations'
 
     export default {
         computed: mapState({
@@ -25,7 +25,7 @@
                 this.$store.commit('Message/' + REMOVE_READ_MUTATION)
             },
             messages: function (newMessage) {
-                this.$store.commit('Message/' + MARK_AS_READ_MUTATION)
+                this.$store.commit('Message/' + MARK_ALL_AS_READ_MUTATION)
             },
         },
         methods: {
