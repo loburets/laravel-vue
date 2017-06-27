@@ -26,7 +26,7 @@ Just a project for technology using
 
 ##### What was used:
 
-- ES6
+- ES6 (including stage-3)
 - Bootstrap
 - Vue
 - Vuex (common FLUX implementation for Vue)
