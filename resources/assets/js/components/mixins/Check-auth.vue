@@ -8,7 +8,7 @@
     export default {
         created() {
             if (!this.$store.state.User.authorized) {
-                router.push('/').then()
+                router.push({ path: '/' }).then()
                 this.$store.commit('Message/' + ADD_MESSAGE_MUTATION, 'You are not authorized')
             }
         },

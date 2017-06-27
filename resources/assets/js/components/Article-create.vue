@@ -27,7 +27,7 @@
 
                 this.$store.dispatch('Article/' + CREATE_ARTICLE_ACTION)
                     .then(() => {
-                        router.push('articles')
+                        router.push({name: 'articles'})
                         this.$store.commit('Message/' + ADD_MESSAGE_MUTATION, 'The article has been created')
                         this.loaded = true
                     }).catch((error) => {
