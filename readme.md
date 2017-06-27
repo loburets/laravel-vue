@@ -10,8 +10,6 @@ Here you can see how to create some application based at Vue and Laravel with mo
 
 ![article](md-assets/gif/article.gif)
 
-![login](md-assets/gif/login.gif)
-
 ### Frontend
 
 #### Cases:
@@ -39,13 +37,15 @@ Here you can see how to create some application based at Vue and Laravel with mo
 #### Cases:
 
 - Auth controllers based on default scaffolding controllers, but for the JWT (JSON Web Tokens) 
-- Simple typical Laravel migrations, seeds, models, controllers, routes, tests, middlewares, requests
+- Simple typical Laravel migrations, seeds, models, controllers, routes, tests, middlewares, requests etc
 
 #### What was used:
 
 - Laravel 5.4
 - Package "tymon/jwt-auth" - laravel JWT implementation
 - Packages "laravel-debugbar", "laravel-ide-helper" just for development improving
+
+![login](md-assets/gif/login.gif)
 
 ### What can you see
 
