@@ -18,6 +18,7 @@
     export default {
         created() {
             this.$store.dispatch('User/' + LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION)
+                .catch((error) => {})
         },
     }
 </script>

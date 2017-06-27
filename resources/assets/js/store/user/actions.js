@@ -1,4 +1,4 @@
-import { LOGIN_RESPONSE_MUTATION,  LOGOUT_MUTATION } from './mutations'
+import { LOGIN_RESPONSE_MUTATION,  LOGOUT_MUTATION, FAILED_LOGIN_MUTATION } from './mutations'
 import { UPDATE_INPUTS_ERRORS_MUTATION, RESET_INPUTS_MUTATION } from 'components/input'
 
 /**
@@ -29,6 +29,7 @@ export default {
                 context.commit(RESET_INPUTS_MUTATION)
                 resolve()
             }).catch((error) => {
+                context.commit(FAILED_LOGIN_MUTATION)
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
                 reject()
             })
@@ -53,6 +54,7 @@ export default {
         let token = localStorage.getItem('token');
 
         if (typeof token !== 'string' || token.length === 0) {
+            context.commit(FAILED_LOGIN_MUTATION)
             context.commit(LOGOUT_MUTATION)
             return
         }
@@ -64,6 +66,7 @@ export default {
                 context.commit(LOGIN_RESPONSE_MUTATION, response)
                 resolve()
             }).catch((error) => {
+                context.commit(FAILED_LOGIN_MUTATION)
                 context.commit(LOGOUT_MUTATION)
                 reject()
             })

@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2" v-for="message in messages">
                 <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="remove(message.id)"><span aria-hidden="true">&times;</span></button>
                     {{ message.text }}
                 </div>
-
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import { REMOVE_READED, MARK_AS_READED } from 'store/message/mutations'
+    import { REMOVE_READ_MUTATION, MARK_AS_READ_MUTATION, REMOVE_MUTATION } from 'store/message/mutations'
 
     export default {
         computed: mapState({
@@ -22,11 +22,16 @@
         }),
         watch: {
             route: function (newRoute) {
-                this.$store.commit('Message/' + REMOVE_READED)
+                this.$store.commit('Message/' + REMOVE_READ_MUTATION)
             },
             messages: function (newMessage) {
-                this.$store.commit('Message/' + MARK_AS_READED)
+                this.$store.commit('Message/' + MARK_AS_READ_MUTATION)
             },
         },
+        methods: {
+            remove(id) {
+                this.$store.commit('Message/' + REMOVE_MUTATION, id)
+            },
+        }
     }
 </script>
