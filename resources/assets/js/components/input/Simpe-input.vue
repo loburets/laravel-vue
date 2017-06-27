@@ -29,6 +29,8 @@
 </template>
 
 <script>
+    import { UPDATE_INPUT_MUTATION } from 'components/input'
+
     export default {
         props: ['type', 'placeholder', 'name', 'store'],
         data() {
@@ -37,11 +39,11 @@
             }
         },
         created() {
-            this.$store.commit(this.store + '/UPDATE_INPUT_MUTATION', { 'name': this.name, 'value': this.inputValue })
+            this.$store.commit(this.store + '/' + UPDATE_INPUT_MUTATION, { 'name': this.name, 'value': this.inputValue })
         },
         watch: {
             inputValue: function (newInputValue) {
-                this.$store.commit(this.store + '/UPDATE_INPUT_MUTATION', { 'name': this.name, 'value': newInputValue })
+                this.$store.commit(this.store + '/' + UPDATE_INPUT_MUTATION, { 'name': this.name, 'value': newInputValue })
             },
         },
         computed: {
