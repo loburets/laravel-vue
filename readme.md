@@ -27,9 +27,11 @@ Just a project for technology using
 ##### What was used:
 
 - ES6
+- Bootstrap
 - Vue
 - Vuex (common FLUX implementation for Vue)
-- Routes    
+- Vue Router    
+- Axios
 
 #### Backend
 
