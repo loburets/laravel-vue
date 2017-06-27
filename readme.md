@@ -7,7 +7,11 @@ It is not best practices or standards.
 This is just example which can be useful for newcomers or quick developing start. 
 
 Here you can see how to create some application based at Vue and Laravel with most common features implementation what you typically need.
-    
+
+![article][md-assets/gif/article.gif]
+
+![login][md-assets/gif/login.gif]
+
 #### Frontend
 
 ##### Cases:
