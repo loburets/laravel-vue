@@ -1,6 +1,6 @@
-### Vue + Laravel typical cases
+## Vue + Laravel typical cases
 
-#### What is it?
+### What is it?
 
 It is not best practices or standards. 
 
@@ -8,13 +8,13 @@ This is just example which can be useful for newcomers or quick developing start
 
 Here you can see how to create some application based at Vue and Laravel with most common features implementation what you typically need.
 
-![article][md-assets/gif/article.gif]
+![article](md-assets/gif/article.gif)
 
-![login][md-assets/gif/login.gif]
+![login](md-assets/gif/login.gif)
 
-#### Frontend
+### Frontend
 
-##### Cases:
+#### Cases:
 
 - Registration/login
 - Pagination
@@ -24,7 +24,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - Validation messages from laravel
 - Simple preloader
 
-##### What was used:
+#### What was used:
 
 - ES6 (including stage-3)
 - Bootstrap
@@ -34,22 +34,22 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - Axios
 - Laravel Mix (API for Webpack) 
 
-#### Backend
+### Backend
 
-##### Cases:
+#### Cases:
 
 - Auth controllers based on default scaffolding controllers, but for the JWT (JSON Web Tokens) 
 - Simple typical Laravel migrations, seeds, models, controllers, routes, tests, middlewares, requests
 
-##### What was used:
+#### What was used:
 
 - Laravel 5.4
 - Package "tymon/jwt-auth" - laravel JWT implementation
 - Packages "laravel-debugbar", "laravel-ide-helper" just for development improving
 
-#### What can you see
+### What can you see
 
-##### Backend:
+#### Backend:
 
 - [Routes](routes/)
 - [Controllers](app/Http/Controllers/)
@@ -61,7 +61,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - [Factories](database/factories/)
 - [Seeds](database/seeds/)
 
-##### Frontend:
+#### Frontend:
 
 - [File webpack.mix.js](webpack.mix.js)
 - [Laravel views](resources/views/)
@@ -81,7 +81,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - [Form inputs](resources/assets/js/components/input)
 - [Mixin for auth checking in component](resources/assets/js/components/mixins/Check-auth.vue)
 
-#### How to install
+### How to install
 
     git clone
     # copy .env.example to .env 
