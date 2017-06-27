@@ -82,22 +82,31 @@ Here you can see how to create some application based at Vue and Laravel with mo
 
 ### How to install
 
+```bash
     git clone
     # copy .env.example to .env 
     # add your database (mysql 5.7+) credentials
     sh sh/run.sh
     npm run watch
+```
 
 Run tests
-    /vendor/bin/phpunit
+
+```bash
+/vendor/bin/phpunit
+```
 
 If "npm run" doesn't work:
 
-    rm -rf node_modules
-    npm install
+```bash
+rm -rf node_modules
+npm install
+```
     
 Or just try to update node and npm:
 
-    sudo npm install n -g
-    sudo n stable
-    sudo npm install npm@latest -g
+```bash
+sudo npm install n -g
+sudo n stable
+sudo npm install npm@latest -g
+```
