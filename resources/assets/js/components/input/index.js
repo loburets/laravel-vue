@@ -10,9 +10,9 @@
  *
  *      ,...inputStateVariables,
  *
- * 3) In your action:
+ * 3) In your action reset inputs or add validation errors:
  *
- * axios.post(/some-url', someDataFromYourStore.inputs).then((response) => {
+ * axios.post(/some-url', yourStore.inputs).then((response) => {
  *      //something what you want
  *      //then reset data of inputs
  *      context.commit(RESET_INPUTS_MUTATION)
@@ -21,7 +21,22 @@
  *    context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
  * })
  *
- * 4) PROFIT!
+ * 4) In your component template:
+ *
+ *      <simple-input type="password" placeholder="Enter your password" name="password" store="User"></simple-input>
+ *
+ * 5) In your component:
+ *
+ *      import { RESET_INPUTS_MUTATION } from 'components/input'
+ *
+ *      //...
+ *
+ *      beforeRouteLeave (to, from, next) {
+ *          this.$store.commit('Your_store/' + RESET_INPUTS_MUTATION)
+ *          next()
+ *      },
+ *
+ * 6) PROFIT!
  *
  */
 
