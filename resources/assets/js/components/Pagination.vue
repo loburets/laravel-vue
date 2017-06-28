@@ -35,7 +35,7 @@
                 return this.$store.state[this.storeName].lastPage
             },
             storeName: function () {
-                return this.entity.charAt(0).toUpperCase() + this.entity.slice(1);
+                return this.entity.charAt(0).toUpperCase() + this.entity.slice(1)
             },
         },
         created() {
