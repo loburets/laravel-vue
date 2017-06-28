@@ -75,6 +75,9 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, Article $article)
     {
         $article->update($request->all());
+
+        return response()
+            ->json(['updated' => 'true', 'id' => $article->id]);
     }
 
     /**
@@ -86,5 +89,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
+
+        return response()
+            ->json(['deleted' => 'true', 'id' => $article->id]);
     }
 }
