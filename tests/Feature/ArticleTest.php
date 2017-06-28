@@ -23,7 +23,12 @@ class ArticleTest extends TestCase
         $user =factory(User::class)->create();
         $token = \JWTAuth::fromUser($user);
 
-        $response = $this->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text'], ['HTTP_Authorization' => 'Bearer ' . $token]);
+        $response = $this->json(
+            'POST',
+            '/api/article',
+            ['name' => 'Name', 'text' => 'Some article text'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
 
         $response->assertStatus(200)
             ->assertJson([
@@ -48,6 +53,21 @@ class ArticleTest extends TestCase
             ->assertJson([
                 'error' => 'token_not_provided',
             ]);
+
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user) . 'wrong_part';
+
+        $response = $this->json(
+            'POST',
+            '/api/article',
+            ['name' => 'Name', 'text' => 'Some article text'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
+
+        $response->assertStatus(400)
+            ->assertJson([
+                'error' => 'token_invalid',
+            ]);
     }
 
     /**
@@ -59,9 +79,14 @@ class ArticleTest extends TestCase
         $user =factory(User::class)->create();
         $token = \JWTAuth::fromUser($user);
 
-        $failResponse = $this->json('POST', '/api/article', [], ['HTTP_Authorization' => 'Bearer ' . $token]);
+        $response = $this->json(
+            'POST',
+            '/api/article',
+            [],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
 
-        $failResponse->assertStatus(422)
+        $response->assertStatus(422)
             ->assertJsonStructure([
                 'name',
                 'text',
@@ -87,6 +112,174 @@ class ArticleTest extends TestCase
                     'text' => $article->text,
                 ]);
         }
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function anyone_can_view_article()
+    {
+        $article = factory(Article::class)->create();
+
+        $response = $this->json('get', '/api/article/'  . $article->id);
+
+        $response->assertStatus(200)
+            ->assertJsonFragment([
+                'id' => $article->id,
+                'name' => $article->name,
+                'text' => $article->text,
+            ]);
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function user_can_edit_article()
+    {
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user);
+        $article = factory(Article::class)->create();
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['name' => 'Name', 'text' => 'Some article text', '_method' => 'PATCH'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'updated' => true,
+                'id' => $article->id,
+            ]);
+
+        $this->assertDatabaseHas('articles', [
+            'name' => 'Name',
+            'text' => 'Some article text',
+        ]);
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function unauthorized_user_can_not_edit_article()
+    {
+        $article = factory(Article::class)->create();
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['name' => 'Name', 'text' => 'Some article text', '_method' => 'PATCH']
+        );
+
+        $response->assertStatus(400)
+            ->assertJson([
+                'error' => 'token_not_provided',
+            ]);
+
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user) . 'wrong_part';
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['name' => 'Name', 'text' => 'Some article text', '_method' => 'PATCH'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
+        $response->assertStatus(400)
+            ->assertJson([
+                'error' => 'token_invalid',
+            ]);
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function article_editing_is_validated()
+    {
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user);
+        $article = factory(Article::class)->create();
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['_method' => 'PATCH'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
+
+        $response->assertStatus(422)
+            ->assertJsonStructure([
+                'name',
+                'text',
+            ]);
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function user_can_delete_article()
+    {
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user);
+        $article = factory(Article::class)->create();
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['_method' => 'DELETE'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'deleted' => true,
+                'id' => $article->id,
+            ]);
+
+        $this->assertDatabaseMissing('articles', [
+            'id' => $article->id,
+        ]);
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function unauthorized_user_can_not_delete_article()
+    {
+        $article = factory(Article::class)->create();
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['_method' => 'DELETE']
+        );
+
+        $response->assertStatus(400)
+            ->assertJson([
+                'error' => 'token_not_provided',
+            ]);
+
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user) . 'wrong_part';
+
+        $response = $this->json(
+            'POST',
+            '/api/article/' . $article->id,
+            ['_method' => 'DELETE'],
+            ['HTTP_Authorization' => 'Bearer ' . $token]
+        );
+
+        $response->assertStatus(400)
+            ->assertJson([
+                'error' => 'token_invalid',
+            ]);
     }
 
     /**
