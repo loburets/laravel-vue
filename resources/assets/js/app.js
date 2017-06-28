@@ -19,6 +19,4 @@ new Vue({
  * TODO:
  * Vue tests
  * Dusk tests
- * Usual tests
- * Readme.md
  **/
