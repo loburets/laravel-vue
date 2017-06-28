@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Article;
 use App\Models\User;
-use Laravel\Passport\Passport;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -21,11 +20,10 @@ class ArticleTest extends TestCase
      */
     public function user_can_create_article()
     {
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user);
 
-        $response = $this->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text']);
+        $response = $this->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text'], ['HTTP_Authorization' => 'Bearer ' . $token]);
 
         $response->assertStatus(200)
             ->assertJson([
@@ -46,9 +44,9 @@ class ArticleTest extends TestCase
     {
         $response = $this->json('POST', '/api/article', ['name' => 'Name', 'text' => 'Some article text']);
 
-        $response->assertStatus(401)
+        $response->assertStatus(400)
             ->assertJson([
-                'error' => 'Unauthenticated.',
+                'error' => 'token_not_provided',
             ]);
     }
 
@@ -58,11 +56,10 @@ class ArticleTest extends TestCase
      */
     public function article_creation_is_validated()
     {
-        Passport::actingAs(
-            factory(User::class)->create()
-        );
+        $user =factory(User::class)->create();
+        $token = \JWTAuth::fromUser($user);
 
-        $failResponse = $this->json('POST', '/api/article');
+        $failResponse = $this->json('POST', '/api/article', [], ['HTTP_Authorization' => 'Bearer ' . $token]);
 
         $failResponse->assertStatus(422)
             ->assertJsonStructure([
