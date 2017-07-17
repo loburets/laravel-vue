@@ -51,7 +51,7 @@ export default {
     },
     [LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION] (context) {
 
-        let token = localStorage.getItem('token');
+        let token = localStorage.getItem('token')
 
         if (typeof token !== 'string' || token.length === 0) {
             context.commit(FAILED_LOGIN_MUTATION)

@@ -32,7 +32,7 @@ export default {
         state.failedLogin = false
         state.email = response.data.user.email
         localStorage.setItem('token', token)
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
     },
     [LOGOUT_MUTATION] (state) {
 

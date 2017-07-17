@@ -14,11 +14,3 @@ new Vue({
     store,
     render: h => h(App),
 })
-
-/**
- * TODO:
- * Vue tests
- * Dusk tests
- * Usual tests
- * Readme.md
- **/
