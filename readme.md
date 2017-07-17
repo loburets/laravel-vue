@@ -92,7 +92,7 @@ git clone git@github.com:dima-loburec/laravel-vue.git
 cd laravel-vue/
 
 # frontend:
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 npm install && npm run dev
+docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 npm rebuild node-sass --force && npm install && npm run dev
 
 # backend:
 cd docker/
