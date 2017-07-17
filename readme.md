@@ -84,7 +84,7 @@ Components
 
 ### How to install
 
-Via Docker:
+Via Docker (just copy-past):
 
 ```bash
 git clone git@github.com:dima-loburec/laravel-vue.git
