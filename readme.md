@@ -60,6 +60,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - [Migrations](database/migrations/)
 - [Factories](database/factories/)
 - [Seeds](database/seeds/)
+- [Docker](docker/)
 
 #### Frontend:
 
