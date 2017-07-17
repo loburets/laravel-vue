@@ -1,5 +1,7 @@
+#/bin/sh
+
 composer install \
-&& cp /var/www/docker/.env /var/www/.env \
+&& cp /var/www/.env.example /var/www/.env \
 && php artisan key:generate \
 && php artisan view:clear \
 && php artisan cache:clear \

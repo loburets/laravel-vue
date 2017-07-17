@@ -2,7 +2,7 @@ version: '2'
 services:
     web:
         build:
-            context: ./
+            context: ./web/
             dockerfile: web.docker
         volumes:
             - ../:/var/www
@@ -12,7 +12,7 @@ services:
             - app
     app:
         build:
-            context: ./
+            context: ./app/
             dockerfile: app.docker
         volumes:
             - ../:/var/www
@@ -21,13 +21,14 @@ services:
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=database"
-        command: sh /var/www/docker/app.sh
     database:
         image: mysql:5.7
         volumes:
-            - ./data/mysql:/var/lib/mysql
+            - ../docker/database/data:/var/lib/mysql
         environment:
             - "MYSQL_ROOT_PASSWORD=root"
-            - "MYSQL_DATABASE=laravel_db"
+            - "MYSQL_PASSWORD=secret"
+            - "MYSQL_USER=homestead"
+            - "MYSQL_DATABASE=homestead"
         ports:
             - "33061:3306"
