@@ -27,8 +27,8 @@ services:
             - ../docker/database/data:/var/lib/mysql
         environment:
             - "MYSQL_ROOT_PASSWORD=root"
-            - "MYSQL_PASSWORD=secret"
             - "MYSQL_USER=homestead"
+            - "MYSQL_PASSWORD=secret"
             - "MYSQL_DATABASE=homestead"
         ports:
             - "33061:3306"
