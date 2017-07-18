@@ -21,6 +21,9 @@ services:
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=database"
+            - "DB_DATABASE=homestead"
+            - "DB_USERNAME=homestead"
+            - "DB_PASSWORD=secret"
     database:
         image: mysql:5.7
         volumes:
