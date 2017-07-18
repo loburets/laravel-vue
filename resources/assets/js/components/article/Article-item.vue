@@ -25,7 +25,12 @@
 
     export default {
 
-        props: ['article'],
+        props: {
+            article: {
+                type: Object,
+                required: true,
+            },
+        },
         data: function () {
             return {
                 loaded: true

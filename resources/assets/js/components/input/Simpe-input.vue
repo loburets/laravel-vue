@@ -33,6 +33,28 @@
 
     export default {
         props: ['type', 'placeholder', 'name', 'store', 'initialValue'],
+        props: {
+            type: {
+                type: String,
+                required: true,
+            },
+            placeholder: {
+                type: String,
+                required: true,
+            },
+            name: {
+                type: String,
+                required: true,
+            },
+            store: {
+                type: String,
+                required: true,
+            },
+            initialValue: {
+                type: String,
+                default: '',
+            },
+        },
         data() {
             return {
                 inputValue: '',

@@ -20,7 +20,12 @@
     import { mapState } from 'vuex'
 
     export default {
-        props: ['entity'],
+        props: {
+            entity: {
+                type: String,
+                required: true,
+            },
+        },
         data: function () {
             return {
                 pages: []
