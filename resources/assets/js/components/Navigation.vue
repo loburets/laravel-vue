@@ -13,7 +13,7 @@
 
                 <!-- Branding Image -->
                 <router-link class="navbar-brand" to="/">
-                    Pet.loc
+                    Laravel-vue
                 </router-link>
             </div>
 
