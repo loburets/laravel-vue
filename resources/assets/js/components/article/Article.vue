@@ -23,8 +23,7 @@
 
 <script>
     import Vue from 'vue'
-    import Preloader from 'components/Preloader'
-    Vue.component('preloader', Preloader)
+    import preloader from 'components/preloader'
     import { mapState } from 'vuex'
     import router from 'router'
     import { LOAD_ARTICLE_ACTION, DELETE_ARTICLE_ACTION } from 'store/article/actions'
@@ -32,6 +31,7 @@
     import { ADD_MESSAGE_MUTATION } from 'store/message/mutations'
 
     export default {
+        components: { preloader },
         created() {
             this.$store.dispatch('Article/' + LOAD_ARTICLE_ACTION, this.$route.params.id)
                 .then(() => {

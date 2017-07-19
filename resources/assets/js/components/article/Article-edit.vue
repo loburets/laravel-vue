@@ -15,12 +15,13 @@
     import { RESET_INPUTS_MUTATION, UPDATE_INPUT_MUTATION } from 'components/input'
     import router from 'router'
     import Vue from 'vue'
-    import CheckAuth from 'components/mixins/Check-auth'
+    import checkAuth from 'components/mixins/Check-auth'
     import { mapState } from 'vuex'
     import simpleInput from 'components/input/Simpe-input.vue'
-    Vue.component('simple-input', simpleInput)
+    import preloader from 'components/preloader'
 
     export default {
+        components: { simpleInput, preloader },
         created() {
             // user can be still not authorized when initially loaded at this page, because the authorization is async
             // will loaded later on variable changing
@@ -54,7 +55,7 @@
                     })
             },
         },
-        mixins: [CheckAuth],
+        mixins: [checkAuth],
         data: function () {
             return {
                 //for preloader

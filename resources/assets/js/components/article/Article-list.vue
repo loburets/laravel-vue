@@ -18,17 +18,14 @@
 
 <script>
     import Vue from 'vue'
-    import Preloader from 'components/Preloader'
-    import ArticleItem from './Article-item'
-    import Pagination from 'components/Pagination'
+    import preloader from 'components/preloader'
+    import articleItem from './Article-item'
+    import pagination from 'components/pagination'
     import { mapState } from 'vuex'
     import { LOAD_ARTICLE_LIST_ACTION } from 'store/article/actions'
 
-    Vue.component('preloader', Preloader)
-    Vue.component('article-item', ArticleItem)
-    Vue.component('pagination', Pagination)
-
     export default {
+        components: { preloader, articleItem, pagination },
         computed: mapState({
             articles: state => state.Article.articles,
             loaded: state => state.Article.loaded,

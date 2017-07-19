@@ -21,10 +21,10 @@
     import { ADD_MESSAGE_MUTATION } from 'store/message/mutations'
     import router from 'router'
     import { mapState } from 'vuex'
-
+    import preloader from 'components/preloader'
 
     export default {
-
+        components: { preloader },
         props: {
             article: {
                 type: Object,

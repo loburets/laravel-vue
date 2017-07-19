@@ -13,12 +13,11 @@
     import { RESET_INPUTS_MUTATION } from 'components/input'
     import router from 'router'
     import Vue from 'vue'
-
     import simpleInput from 'components/input/Simpe-input.vue'
-    Vue.component('simple-input', simpleInput)
+    import preloader from 'components/preloader'
 
     export default {
-
+        components: { simpleInput, preloader },
         data: function () {
             return {
                 loaded: true

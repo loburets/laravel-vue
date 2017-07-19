@@ -8,14 +8,12 @@
 
 <script>
     import Vue from 'vue'
-    import Navigation from './Navigation'
-    Vue.component('navigation', Navigation)
-    import Message from './Message.vue'
-    Vue.component('message', Message)
-
+    import navigation from './Navigation'
+    import message from './Message.vue'
     import { LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION } from 'store/user/actions'
 
     export default {
+        components: { navigation, message },
         created() {
             this.$store.dispatch('User/' + LOCAL_STORAGE_LOGIN_ATTEMPT_ACTION)
                 .catch((error) => {})

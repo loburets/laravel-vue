@@ -2,7 +2,7 @@ require('./bootstrap')
 
 import router from './router'
 import store from './store'
-import App from './components/App'
+import app from './components/App'
 import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
 
@@ -12,5 +12,5 @@ new Vue({
     el: '#app',
     router,
     store,
-    render: h => h(App),
+    render: h => h(app),
 })
