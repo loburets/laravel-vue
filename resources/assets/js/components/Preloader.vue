@@ -38,7 +38,7 @@
     .preloader-background {
         width: 100%;
         height: 100%;
-        background: #cdcdcd;
+        background: #e8e8e8;
         opacity: 0.8;
     }
 
