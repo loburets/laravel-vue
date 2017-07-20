@@ -35,7 +35,7 @@
             },
         },
         mixins: [checkAuth],
-        data: function () {
+        data() {
             return {
                 loaded: true
             }

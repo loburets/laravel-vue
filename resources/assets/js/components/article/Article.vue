@@ -46,7 +46,7 @@
             article: state => state.Article.article,
             authorized: state => state.User.authorized,
         }),
-        data: function () {
+        data() {
             return {
                 //for preloader
                 loaded: false

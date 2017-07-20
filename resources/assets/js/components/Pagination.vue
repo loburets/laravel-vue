@@ -26,20 +26,20 @@
                 required: true,
             },
         },
-        data: function () {
+        data() {
             return {
                 pages: []
             }
         },
         //without mapping for props using
         computed: {
-            currentPage: function () {
+            currentPage() {
                 return this.$store.state[this.storeName].currentPage
             },
-            lastPage: function () {
+            lastPage() {
                 return this.$store.state[this.storeName].lastPage
             },
-            storeName: function () {
+            storeName() {
                 return this.entity.charAt(0).toUpperCase() + this.entity.slice(1)
             },
         },

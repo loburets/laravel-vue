@@ -20,7 +20,7 @@
 
     export default {
         components: { simpleInput, preloader },
-        data: function () {
+        data() {
             return {
                 loaded: true
             }

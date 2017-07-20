@@ -56,7 +56,7 @@
             },
         },
         mixins: [checkAuth],
-        data: function () {
+        data() {
             return {
                 //for preloader
                 loaded: false

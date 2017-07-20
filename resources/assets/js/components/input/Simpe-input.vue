@@ -69,7 +69,7 @@
             },
         },
         computed: {
-            errors: function () {
+            errors() {
                 return this.$store.state[this.store].inputsErrors
             },
         },

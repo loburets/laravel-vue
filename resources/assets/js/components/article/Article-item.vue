@@ -31,7 +31,7 @@
                 required: true,
             },
         },
-        data: function () {
+        data() {
             return {
                 loaded: true
             }
