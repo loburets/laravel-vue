@@ -92,7 +92,7 @@ git clone git@github.com:dima-loburec/laravel-vue.git
 cd laravel-vue/
 
 # frontend:
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 npm rebuild node-sass --force && npm install && npm run dev
+docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 npm rebuild node-sass --force && yarn install && yarn run dev
 
 # backend:
 cd docker/
@@ -109,7 +109,7 @@ Manually:
 git clone git@github.com:dima-loburec/laravel-vue.git
 # copy .env.example to .env and add your database (mysql 5.7+) credentials
 # add vhost to your web-server for public folder
-# run composer, artisan, npm:
+# run composer, artisan, npm/yarn:
 sh sh/run.sh
 npm run watch
 ```
