@@ -27,4 +27,12 @@ class Article extends Model
      * @var array
      */
     protected $fillable = ['name', 'text'];
+
+    /**
+     * Get the user that owns the article.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

@@ -6,5 +6,6 @@ $factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence(),
         'text' => $faker->text(500),
+        'user_id' => \App\Models\User::all()->random(),
     ];
 });
