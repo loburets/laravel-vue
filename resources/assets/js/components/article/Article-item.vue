@@ -5,6 +5,9 @@
 
         <div class="panel-body">
             {{ article.text }}
+            <br>
+            <br>
+            <i>By {{ article.user.name }}</i>
         </div>
 
         <div class="container-fluid row_btns">

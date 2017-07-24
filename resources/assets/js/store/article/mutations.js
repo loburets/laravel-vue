@@ -41,7 +41,7 @@ export default {
     [PROCESS_ARTICLE_LIST_RESPONSE_MUTATION] (state, response) {
         let data = response.data
 
-        state.articles = data.data
+        state.articles = data.data.articles
         state.loaded = true
         state.perPage = data.per_page
         state.currentPage = data.current_page
@@ -54,7 +54,7 @@ export default {
     },
     [PROCESS_ARTICLE_RESPONSE_MUTATION] (state, response) {
 
-        state.article = response.data
+        state.article = response.data.data.articles[0]
     },
     ...inputMutations,
 }

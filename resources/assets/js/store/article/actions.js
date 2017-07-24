@@ -45,7 +45,18 @@ export default {
         context.commit(ARTICLE_LIST_NOT_LOADED_MUTATION)
 
         return new Promise((resolve, reject) => {
-            axios.get('/api/article', { params: { page: page } }).then((response) => {
+            axios.post('/graphql', {
+                query: `query FetchArticles {
+                    articles {
+                        id,
+                        name,
+                        text,
+                        user {
+                            name
+                        }
+                    }
+                }`
+            }).then((response) => {
                 context.commit(PROCESS_ARTICLE_LIST_RESPONSE_MUTATION, response)
                 resolve()
             }).catch((error) => {
@@ -85,7 +96,18 @@ export default {
         context.commit(RESET_ARTICLE_MUTATION)
 
         return new Promise((resolve, reject) => {
-            axios.get('/api/article/'+ id).then((response) => {
+            axios.post('/graphql', {
+                query: `query FetchArticles {
+                    articles (id: ${id}, orderBy: ["created_at", "DESC"]){
+                        id,
+                        name,
+                        text,
+                        user {
+                            name
+                        }
+                    }
+                }`
+            }).then((response) => {
                 context.commit(PROCESS_ARTICLE_RESPONSE_MUTATION, response)
                 resolve()
             }).catch((error) => {
