@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return Article::orderBy('created_at', 'desc')->paginate(5);
+        //
     }
 
     /**
@@ -51,7 +51,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return $article;
+        //
     }
 
     /**
