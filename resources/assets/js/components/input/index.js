@@ -71,6 +71,12 @@ export const SET_METHOD_FIELD_MUTATION = 'SET_METHOD_FIELD_MUTATION'
  */
 export let inputMutations = {
      [UPDATE_INPUTS_ERRORS_MUTATION] (state, error) {
+         //for graphQL response
+         if (!error.response) {
+             state.inputsErrors = error.data.errors[0].validation
+             return
+         }
+
          state.inputsErrors = error.response.data
      },
      [UPDATE_INPUT_MUTATION] (state, input) {

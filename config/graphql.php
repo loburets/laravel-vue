@@ -100,8 +100,9 @@ return [
             'query' => [
                 'articles' => App\GraphQL\Query\ArticlesQuery::class,
             ],
+            //todo move to private
             'mutation' => [
-
+                'updateArticle' => App\GraphQL\Mutation\UpdateArticleMutation::class,
             ]
         ]
     ],

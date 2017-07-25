@@ -119,9 +119,24 @@ export default {
     [UPDATE_ARTICLE_ACTION] (context) {
 
         return new Promise((resolve, reject) => {
-            context.commit(SET_METHOD_FIELD_MUTATION, 'PATCH')
+            //todo text processing for ', ", \n etc
+            axios.post('/graphql', {
+                query: `mutation articles {
+                    updateArticle (
+                        id: ${context.state.article.id},
+                        name: "${context.state.inputs.name}",
+                        text: "${context.state.inputs.text.replace(/(?:\r\n|\r|\n)/g, '\\n')}"
+                    ){
+                        id
+                    }
+                }`
+            }).then((response) => {
+                if (!response.data.data.updateArticle) {
+                    context.commit(UPDATE_INPUTS_ERRORS_MUTATION, response)
+                    reject()
+                    return
+                }
 
-            axios.post('/api/article/' + context.state.article.id, context.state.inputs).then((response) => {
                 context.commit(RESET_INPUTS_MUTATION)
                 context.commit(RESET_ARTICLE_MUTATION)
                 resolve()
