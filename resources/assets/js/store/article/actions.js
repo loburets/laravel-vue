@@ -52,9 +52,9 @@ export default {
                             orderBy: ["created_at", "DESC"]
                             page: { number: 1, size: 10 }
                         ) {
-                            id,
-                            name,
-                            text,
+                            id
+                            name
+                            text
                             user {
                                 name
                             }
@@ -128,9 +128,9 @@ export default {
                 query: `
                     query FetchArticles {
                         articles (id: ${id}) {
-                            id,
-                            name,
-                            text,
+                            id
+                            name
+                            text
                             user {
                                 name
                             }
