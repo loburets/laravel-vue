@@ -164,7 +164,6 @@ export default {
                 }
 
                 context.commit(RESET_INPUTS_MUTATION)
-                context.commit(RESET_ARTICLE_MUTATION)
                 resolve()
             }).catch((error) => {
                 context.commit(UPDATE_INPUTS_ERRORS_MUTATION, error)
