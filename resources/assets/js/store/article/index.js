@@ -1,6 +1,6 @@
 import mutations from './mutations'
 import actions from './actions'
-import {inputStateVariables} from 'components/input'
+import {inputStateVariables, inputStateGetters} from 'components/input'
 
 export default {
     namespaced: true,
@@ -16,4 +16,5 @@ export default {
     },
     mutations: mutations,
     actions: actions,
+    getters: inputStateGetters,
 }

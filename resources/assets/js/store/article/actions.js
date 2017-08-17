@@ -73,8 +73,8 @@ export default {
                 query: `
                     mutation articles {
                         createArticle (
-                            name: "${context.state.inputs.name}",
-                            text: "${context.state.inputs.text}"
+                            name: "${context.getters.getInputValueForGraphQL('name')}",
+                            text: "${context.getters.getInputValueForGraphQL('text')}"
                         ){
                             id
                         }
@@ -150,8 +150,8 @@ export default {
                     mutation articles {
                         updateArticle (
                             id: ${context.state.article.id},
-                            name: "${context.state.inputs.name}",
-                            text: "${context.state.inputs.text}"
+                            name: "${context.getters.getInputValueForGraphQL('name')}",
+                            text: "${context.getters.getInputValueForGraphQL('text')}"
                         ){
                             id
                         }

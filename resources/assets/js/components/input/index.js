@@ -92,6 +92,19 @@ export let inputMutations = {
 }
 
 /**
+ * Add this getters to your vuex store
+ */
+export let inputStateGetters = {
+
+    //escape some of symbols for using the string in query for the GraphQL
+    getInputValueForGraphQL: (state, getters) => (name) => {
+        return state.inputs[name]
+            .replace(/(?:\r\n|\r|\n)/g, '\\n')
+            .replace(/"/g, '\\"')
+    },
+}
+
+/**
  * Add this variables to your vuex store initial state
  *
  * @type {{inputs: {}, inputsErrors: {}}}
