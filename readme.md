@@ -85,6 +85,8 @@ Components
 
 ### How to install
 
+![do-it](md-assets/gif/do-it.gif)
+
 Via Docker (just copy-past):
 
 ```bash
