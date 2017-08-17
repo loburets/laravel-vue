@@ -39,14 +39,13 @@ export default {
         state.articles = []
     },
     [PROCESS_ARTICLE_LIST_RESPONSE_MUTATION] (state, response) {
-        let data = response.data
+        let data = response.data.data.articles
 
-        state.articles = data.data.articles
+        state.articles = data.items
         state.loaded = true
-        state.perPage = data.per_page
-        state.currentPage = data.current_page
-        state.lastPage = data.last_page
-        state.path = data.path
+        state.perPage = data.size
+        state.currentPage = data.currentPage
+        state.lastPage = data.lastPage
     },
     [RESET_ARTICLE_MUTATION] (state) {
 

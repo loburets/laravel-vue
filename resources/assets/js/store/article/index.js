@@ -11,7 +11,6 @@ export default {
         perPage: null,
         currentPage: null,
         lastPage: null,
-        path: null,
         ...inputStateVariables,
     },
     mutations: mutations,

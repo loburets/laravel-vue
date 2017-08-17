@@ -47,17 +47,29 @@ export default {
         return new Promise((resolve, reject) => {
             axios.post('/graphql', {
                 query: `
-                    query FetchArticles {
+                    query {
                         articles(
                             orderBy: ["created_at", "DESC"]
-                            page: { number: 1, size: 10 }
+                            page: { number: ${ page }, size: 3 }
                         ) {
-                            id
-                            name
-                            text
-                            user {
+                            items{
+                                id
                                 name
+                                text
+                                user {
+                                    name
+                                }
                             }
+                            totalCount
+                            hasNextPage
+                            hasPreviousPage
+                            totalPages 
+                            size 
+                            currentPage
+                            firstItem
+                            lastItem
+                            lastPage
+                            count
                         }
                     }`
             }).then((response) => {
