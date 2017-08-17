@@ -62,8 +62,8 @@ class ListType extends GraphQLType
                 'description' => 'There are the previous page'
             ],
             'lastPage' => [
-                'type' => Type::boolean(),
-                'description' => 'It is the last page'
+                'type' => Type::int(),
+                'description' => 'The number the last page'
             ],
             'items' => [
                 'type' => Type::listOf($type),
