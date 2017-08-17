@@ -80,7 +80,15 @@ export default {
     [DELETE_ARTICLE_ACTION] (context, id) {
 
         return new Promise((resolve, reject) => {
-            axios.post('/api/article/' + id, { '_method' : 'DELETE' }).then((response) => {
+            axios.post('/graphql', {
+                query: `mutation articles {
+                    removeArticle (
+                        id: ${id},
+                    ){
+                        id
+                    }
+                }`
+            }).then((response) => {
                 context.dispatch(LOAD_ARTICLE_LIST_ACTION)
                     .then(() => {
                         resolve()

@@ -103,6 +103,7 @@ return [
             //todo move to private
             'mutation' => [
                 'updateArticle' => App\GraphQL\Mutation\UpdateArticleMutation::class,
+                'removeArticle' => App\GraphQL\Mutation\RemoveArticleMutation::class,
             ]
         ]
     ],
