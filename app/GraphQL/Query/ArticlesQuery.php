@@ -2,6 +2,8 @@
 
 namespace App\GraphQL\Query;
 
+use App\GraphQL\Helpers\PaginationHelper;
+use App\GraphQL\Type\ListType;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
@@ -15,7 +17,10 @@ class ArticlesQuery extends Query
     
     public function type()
     {
-        return Type::listOf(GraphQL::type('Article'));
+        //todo
+        $listType = new ListType(GraphQL::type('Article'));
+
+        return $listType->toType();
     }
 
     public function args()
@@ -56,7 +61,8 @@ class ArticlesQuery extends Query
         if (isset($args['page']) && isset($args['page']['size'])) {
             $perPage = $args['page']['size'];
         }
-
-        return $articles->paginate($perPage, ['*'], 'page', $page);
+        //todo
+        $helper = new PaginationHelper();
+        return $helper->getQueryResult($articles, $perPage, $page);
     }
 }
