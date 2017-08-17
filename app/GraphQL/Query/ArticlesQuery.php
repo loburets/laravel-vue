@@ -41,8 +41,8 @@ class ArticlesQuery extends Query
             }
         }
 
-        if (isset($args['orderby'])) {
-            $articles->orderBy(...$args['orderby']);
+        if (isset($args['orderBy'])) {
+            $articles->orderBy(...$args['orderBy']);
         }
 
         return $articles->paginate(5);

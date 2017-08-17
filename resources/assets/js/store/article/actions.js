@@ -46,16 +46,17 @@ export default {
 
         return new Promise((resolve, reject) => {
             axios.post('/graphql', {
-                query: `query FetchArticles {
-                    articles {
-                        id,
-                        name,
-                        text,
-                        user {
-                            name
+                query: `
+                    query FetchArticles {
+                        articles(orderBy: ["created_at", "DESC"]) {
+                            id,
+                            name,
+                            text,
+                            user {
+                                name
+                            }
                         }
-                    }
-                }`
+                    }`
             }).then((response) => {
                 context.commit(PROCESS_ARTICLE_LIST_RESPONSE_MUTATION, response)
                 resolve()
@@ -69,14 +70,15 @@ export default {
 
         return new Promise((resolve, reject) => {
             axios.post('/graphql', {
-                query: `mutation articles {
-                    createArticle (
-                        name: "${context.state.inputs.name}",
-                        text: "${context.state.inputs.text.replace(/(?:\r\n|\r|\n)/g, '\\n')}"
-                    ){
-                        id
-                    }
-                }`
+                query: `
+                    mutation articles {
+                        createArticle (
+                            name: "${context.state.inputs.name}",
+                            text: "${context.state.inputs.text}"
+                        ){
+                            id
+                        }
+                    }`
             }).then((response) => {
                 if (!response.data.data.createArticle) {
                     context.commit(UPDATE_INPUTS_ERRORS_MUTATION, response)
@@ -95,13 +97,14 @@ export default {
 
         return new Promise((resolve, reject) => {
             axios.post('/graphql', {
-                query: `mutation articles {
-                    removeArticle (
-                        id: ${id},
-                    ){
-                        id
-                    }
-                }`
+                query: `
+                    mutation articles {
+                        removeArticle (
+                            id: ${id},
+                        ){
+                            id
+                        }
+                    }`
             }).then((response) => {
                 context.dispatch(LOAD_ARTICLE_LIST_ACTION)
                     .then(() => {
@@ -119,16 +122,17 @@ export default {
 
         return new Promise((resolve, reject) => {
             axios.post('/graphql', {
-                query: `query FetchArticles {
-                    articles (id: ${id}, orderBy: ["created_at", "DESC"]){
-                        id,
-                        name,
-                        text,
-                        user {
-                            name
+                query: `
+                    query FetchArticles {
+                        articles (id: ${id}) {
+                            id,
+                            name,
+                            text,
+                            user {
+                                name
+                            }
                         }
-                    }
-                }`
+                    }`
             }).then((response) => {
                 context.commit(PROCESS_ARTICLE_RESPONSE_MUTATION, response)
                 resolve()
@@ -141,17 +145,17 @@ export default {
     [UPDATE_ARTICLE_ACTION] (context) {
 
         return new Promise((resolve, reject) => {
-            //todo text processing for ', ", \n etc
             axios.post('/graphql', {
-                query: `mutation articles {
-                    updateArticle (
-                        id: ${context.state.article.id},
-                        name: "${context.state.inputs.name}",
-                        text: "${context.state.inputs.text.replace(/(?:\r\n|\r|\n)/g, '\\n')}"
-                    ){
-                        id
-                    }
-                }`
+                query: `
+                    mutation articles {
+                        updateArticle (
+                            id: ${context.state.article.id},
+                            name: "${context.state.inputs.name}",
+                            text: "${context.state.inputs.text}"
+                        ){
+                            id
+                        }
+                    }`
             }).then((response) => {
                 if (!response.data.data.updateArticle) {
                     context.commit(UPDATE_INPUTS_ERRORS_MUTATION, response)
