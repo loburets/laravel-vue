@@ -23,6 +23,7 @@ class ArticlesQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'orderBy' => ['name' => 'orderBy', 'type' => Type::listOf(Type::string())],
+            'page' => ['name' => 'page', 'type' => GraphQL::type('Page')],
         ];
     }
 
@@ -45,6 +46,17 @@ class ArticlesQuery extends Query
             $articles->orderBy(...$args['orderBy']);
         }
 
-        return $articles->paginate(5);
+        $page = 1;
+        $perPage = 5;
+
+        if (isset($args['page']) && isset($args['page']['number'])) {
+           $page = $args['page']['number'];
+        }
+
+        if (isset($args['page']) && isset($args['page']['size'])) {
+            $perPage = $args['page']['size'];
+        }
+
+        return $articles->paginate($perPage, ['*'], 'page', $page);
     }
 }

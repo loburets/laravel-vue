@@ -48,7 +48,10 @@ export default {
             axios.post('/graphql', {
                 query: `
                     query FetchArticles {
-                        articles(orderBy: ["created_at", "DESC"]) {
+                        articles(
+                            orderBy: ["created_at", "DESC"]
+                            page: { number: 1, size: 10 }
+                        ) {
                             id,
                             name,
                             text,
