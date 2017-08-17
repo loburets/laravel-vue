@@ -32,7 +32,6 @@
     import { UPDATE_INPUT_MUTATION } from 'components/input'
 
     export default {
-        props: ['type', 'placeholder', 'name', 'store', 'initialValue'],
         props: {
             type: {
                 type: String,
@@ -54,6 +53,9 @@
                 type: String,
                 default: '',
             },
+        },
+        mounted() {
+            this.$store.commit(this.store + '/' + UPDATE_INPUT_MUTATION, { 'name': this.name, 'value': '' })
         },
         data() {
             return {
