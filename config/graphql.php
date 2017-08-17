@@ -104,6 +104,7 @@ return [
             'mutation' => [
                 'updateArticle' => App\GraphQL\Mutation\UpdateArticleMutation::class,
                 'removeArticle' => App\GraphQL\Mutation\RemoveArticleMutation::class,
+                'createArticle' => App\GraphQL\Mutation\CreateArticleMutation::class,
             ]
         ]
     ],

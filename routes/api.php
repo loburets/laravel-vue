@@ -17,20 +17,10 @@ Route::middleware('api')->group(function () {
 
     Route::post('jwt-login', 'Auth\LoginController@jwtLogin');
     Route::post('jwt-register', 'Auth\RegisterController@jwtRegister');
-    Route::get('article', 'ArticleController@index');
-    Route::get('article/{article}', 'ArticleController@show');
 });
 
 
 Route::middleware(['jwt.auth'])->group(function () {
 
     Route::get('jwt-check', 'Auth\LoginController@jwtCheck');
-
-    Route::resource(
-        'article',
-        'ArticleController',
-        [
-            'except' => ['create', 'index', 'edit', 'show']
-        ]
-    );
 });

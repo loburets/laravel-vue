@@ -36,11 +36,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        /** @var Article $article */
-        $article = Article::create($request->all());
-
-        return response()
-            ->json(['created' => 'true', 'id' => $article->id]);
+        //
     }
 
     /**
@@ -85,9 +81,6 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        $article->delete();
-
-        return response()
-            ->json(['deleted' => 'true', 'id' => $article->id]);
+        //
     }
 }

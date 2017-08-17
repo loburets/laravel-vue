@@ -68,7 +68,21 @@ export default {
     [CREATE_ARTICLE_ACTION] (context) {
 
         return new Promise((resolve, reject) => {
-            axios.post('/api/article', context.state.inputs).then((response) => {
+            axios.post('/graphql', {
+                query: `mutation articles {
+                    createArticle (
+                        name: "${context.state.inputs.name}",
+                        text: "${context.state.inputs.text.replace(/(?:\r\n|\r|\n)/g, '\\n')}"
+                    ){
+                        id
+                    }
+                }`
+            }).then((response) => {
+                if (!response.data.data.createArticle) {
+                    context.commit(UPDATE_INPUTS_ERRORS_MUTATION, response)
+                    reject()
+                    return
+                }
                 context.commit(RESET_INPUTS_MUTATION)
                 resolve()
             }).catch((error) => {
