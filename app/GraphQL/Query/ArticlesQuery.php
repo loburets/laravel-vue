@@ -31,12 +31,13 @@ class ArticlesQuery extends Query
 
     public function resolve($root, $args, $context, GraphQL\Type\Definition\ResolveInfo $info)
     {
+        $articles = Article::query();
+
         if (isset($args['id'])) {
-            return Article::where('id' , $args['id'])->get();
+            $articles->where('id' , $args['id']);
         }
 
         $fields = $info->getFieldSelection($depth = 3);
-        $articles = Article::query();
 
         foreach ($fields as $field => $keys) {
             if ($field === 'user') {

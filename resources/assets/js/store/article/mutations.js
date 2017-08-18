@@ -53,7 +53,7 @@ export default {
     },
     [PROCESS_ARTICLE_RESPONSE_MUTATION] (state, response) {
 
-        state.article = response.data.data.articles[0]
+        state.article = response.data.data.articles.items[0]
     },
     ...inputMutations,
 }
