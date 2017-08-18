@@ -236,6 +236,7 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'GraphQL' => Folklore\GraphQL\Support\Facades\GraphQL::class,
+        'PaginationHelper' => App\Facades\PaginationHelper::class,
     ],
 
 ];

@@ -51,8 +51,6 @@ class ArticlesQuery extends Query
             $articles->orderBy(...$args['orderBy']);
         }
 
-        //todo
-        $helper = new PaginationHelper();
-        return $helper->getQueryResult($articles, $args);
+        return \PaginationHelper::getQueryResult($articles, $args);
     }
 }
