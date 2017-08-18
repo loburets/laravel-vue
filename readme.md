@@ -43,7 +43,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 
 - Laravel 5.4
 - Package "tymon/jwt-auth" - laravel JWT implementation
-- Packages "laravel-debugbar", "laravel-ide-helper" just for development improving
+- Packages "laravel-debugbar", "laravel-ide-helper" just for development
 
 ![login](md-assets/gif/login.gif)
 
