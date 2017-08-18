@@ -83,6 +83,15 @@ Components
 - [Form inputs](resources/assets/js/components/input)
 - [Mixin for auth checking in component](resources/assets/js/components/mixins/Check-auth.vue)
 
+### GraphQL
+
+There are the [GraphQL](https://github.com/dima-loburec/laravel-vue/tree/GraphQL) branch
+
+![GraphQL](md-assets/gif/GraphQL.gif)
+
+![GraphQLSchema](md-assets/gif/GraphQLSchema.gif)
+
+
 ### How to install
 
 ![do-it](md-assets/gif/do-it.gif)
