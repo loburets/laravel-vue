@@ -5,10 +5,22 @@ class PaginationHelper
 {
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param array $args
      * @return array
      */
-    public function getQueryResult($query, $perPage, $page)
+    public function getQueryResult($query, $args)
     {
+        $page = 1;
+        $perPage = 5;
+
+        if (isset($args['page']) && isset($args['page']['number'])) {
+            $page = $args['page']['number'];
+        }
+
+        if (isset($args['page']) && isset($args['page']['size'])) {
+            $perPage = $args['page']['size'];
+        }
+
         $paginator = $query->paginate($perPage, ['*'], 'page', $page);
 
         return [

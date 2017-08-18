@@ -51,18 +51,8 @@ class ArticlesQuery extends Query
             $articles->orderBy(...$args['orderBy']);
         }
 
-        $page = 1;
-        $perPage = 5;
-
-        if (isset($args['page']) && isset($args['page']['number'])) {
-           $page = $args['page']['number'];
-        }
-
-        if (isset($args['page']) && isset($args['page']['size'])) {
-            $perPage = $args['page']['size'];
-        }
         //todo
         $helper = new PaginationHelper();
-        return $helper->getQueryResult($articles, $perPage, $page);
+        return $helper->getQueryResult($articles, $args);
     }
 }
