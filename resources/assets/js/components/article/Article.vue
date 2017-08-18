@@ -44,6 +44,9 @@
                     router.push({name: 'articles'})
                     this.$store.commit('Message/' + ADD_MESSAGE_MUTATION, 'The article can\'t be opened')
             })
+
+            //to exclude error on initial rendering
+            this.article.user = {}
         },
         computed: mapState({
             article: state => state.Article.article,
