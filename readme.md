@@ -6,7 +6,7 @@ Here you can see how to create single page application based on Vue and Laravel 
 
 This is just an example.
 
-![article](md-assets/gif/article.gif)
+![article](md-assets/gif/article2.gif)
 
 ### Frontend
 
@@ -43,7 +43,7 @@ This is just an example.
 - Package "tymon/jwt-auth" - laravel JWT implementation
 - Packages "laravel-debugbar", "laravel-ide-helper" - just for development
 
-![login](md-assets/gif/login.gif)
+![login](md-assets/gif/login2.gif)
 
 ### What can you see
 
