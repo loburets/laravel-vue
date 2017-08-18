@@ -43,6 +43,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 
 - Laravel 5.4
 - Package "tymon/jwt-auth" - laravel JWT implementation
+- Package "folklore/graphql" - laravel GraphQL implementation
 - Packages "laravel-debugbar", "laravel-ide-helper" just for development improving
 
 ![login](md-assets/gif/login.gif)
@@ -62,6 +63,10 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - [Seeds](database/seeds/)
 - [Docker](docker/)
 
+- [GraphQL](app/GraphQL/)
+- [Paginated GraphQL type](app/GraphQL/Type/PaginationListType.php)
+- [Pagination within GraphQL query](app/GraphQL/Query/ArticlesQuery.php)
+
 #### Frontend:
 
 - [File webpack.mix.js](webpack.mix.js)
@@ -72,6 +77,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - [Main component](resources/assets/js/components/App.vue)
 - [Vue store structure](resources/assets/js/store/)
 - [Vue router](resources/assets/js/router/index.js)
+- [GraphQL using](resources/assets/js/store/article/actions.js)
 
 Components
 

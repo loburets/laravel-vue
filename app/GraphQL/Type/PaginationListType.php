@@ -25,6 +25,12 @@ class PaginationListType extends GraphQLType
         $this->attributes['description'] = 'List of ' . $name;
 
         $this->fields = [
+            //records of the type:
+            'items' => [
+                'type' => Type::listOf($type),
+                'description' => 'List of ' . $name
+            ],
+            //pagination for the records:
             'totalPages' => [
                 'type' => Type::int(),
                 'description' => 'The quantity of the pages'
@@ -64,10 +70,6 @@ class PaginationListType extends GraphQLType
             'lastPage' => [
                 'type' => Type::int(),
                 'description' => 'The number the last page'
-            ],
-            'items' => [
-                'type' => Type::listOf($type),
-                'description' => 'List of ' . $name
             ],
         ];
 

@@ -4,7 +4,7 @@ namespace App\GraphQL\Helpers;
 class PaginationHelper
 {
     /**
-     * Return paginated result for the GraphQL resolver inside the paginated type
+     * Return paginated result for the GraphQL resolver inside any of the paginated type
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param array $args
@@ -41,7 +41,7 @@ class PaginationHelper
     }
 
     /**
-     * Return type based on other but with pagination
+     * Return type based on the target type with the pagination fields
      *
      * @param string $baseTypeName Type for pagination
      * @return \GraphQL\Type\Definition\ObjectType
