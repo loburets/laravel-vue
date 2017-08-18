@@ -6,7 +6,7 @@ use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
 
-class ListType extends GraphQLType
+class PaginationListType extends GraphQLType
 {
     /**
      * @var array

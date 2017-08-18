@@ -3,7 +3,7 @@
 namespace App\GraphQL\Query;
 
 use App\GraphQL\Helpers\PaginationHelper;
-use App\GraphQL\Type\ListType;
+use App\GraphQL\Type\PaginationListType;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
@@ -17,10 +17,7 @@ class ArticlesQuery extends Query
     
     public function type()
     {
-        //todo
-        $listType = new ListType(GraphQL::type('Article'));
-
-        return $listType->toType();
+        return \PaginationHelper::getPaginatedType('Article');
     }
 
     public function args()

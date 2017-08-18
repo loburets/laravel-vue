@@ -4,6 +4,8 @@ namespace App\GraphQL\Helpers;
 class PaginationHelper
 {
     /**
+     * Return paginated result for the GraphQL resolver inside the paginated type
+     *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param array $args
      * @return array
@@ -36,5 +38,19 @@ class PaginationHelper
             'count' => $paginator->count(),
             'lastPage' => $paginator->lastPage(),
         ];
+    }
+
+    /**
+     * Return type based on other but with pagination
+     *
+     * @param string $baseTypeName Type for pagination
+     * @return \GraphQL\Type\Definition\ObjectType
+     */
+    public function getPaginatedType($baseTypeName)
+    {
+        $type = \GraphQL::type($baseTypeName);
+        $paginationTypeName = 'App\GraphQL\Type\PaginationListType';
+
+        return app()->makeWith($paginationTypeName, ['type' => $type])->toType();
     }
 }

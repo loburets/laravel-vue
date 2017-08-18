@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereText($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereUserId($value)
  */
 class Article extends Model
 {
