@@ -6,7 +6,7 @@ It is not best practices or standards.
 
 This is a just example which can be useful for newcomers or quick developing start. 
 
-Here you can see how to create some application based at Vue and Laravel with most common features implementation what you typically need.
+Here you can see how to create some application based at Vue and Laravel with most common features.
 
 ![article](md-assets/gif/article.gif)
 
@@ -19,7 +19,7 @@ Here you can see how to create some application based at Vue and Laravel with mo
 - Navigation
 - Flash messages
 - Simple CRUD
-- Validation messages from laravel
+- Validation from laravel
 - Simple preloader
 
 #### What was used:
