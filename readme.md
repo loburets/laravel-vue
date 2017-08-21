@@ -4,8 +4,6 @@
 
 Here you can see how to create single page application based on Vue and Laravel with most common features.
 
-This is just an example.
-
 ![article](md-assets/gif/article2.gif)
 
 ### Frontend
@@ -16,9 +14,9 @@ This is just an example.
 - Pagination
 - Navigation
 - Flash messages
-- Simple CRUD
-- Validation from laravel
-- Preloader
+- Simple CRUD (example for articles)
+- Laravel validation (backend validation)
+- Preloader for async actions
 
 #### What was used:
 
@@ -34,7 +32,7 @@ This is just an example.
 
 #### Cases:
 
-- Auth controllers based on default scaffolding controllers, but for the JWT (JSON Web Tokens)
+- Auth controllers based on default auth controllers, but for the JWT (JSON Web Tokens)
 - Simple typical Laravel migrations, seeds, models, controllers, routes, tests, middlewares, requests etc
 
 #### What was used:
@@ -140,7 +138,7 @@ sudo n stable
 sudo npm install npm@latest -g
 ```
 
-### Run tests
+### Tests
 
 ```bash
 /vendor/bin/phpunit
