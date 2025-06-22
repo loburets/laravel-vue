@@ -6,6 +6,8 @@ Here you can see how to create single page application based on Vue and Laravel 
 
 ![article](md-assets/gif/article2.gif)
 
+Naturally, no LLMs involved — they weren’t even in use back in 2017 when this repo was created.
+
 ### Frontend
 
 #### Cases:
